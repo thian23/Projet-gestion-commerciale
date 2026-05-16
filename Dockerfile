@@ -3,16 +3,17 @@ FROM php:8.2-apache
 # --------------------------------------------------
 # Dépendances système + extensions PHP nécessaires
 # --------------------------------------------------
-RUN apt-get update && apt-get install -y \
-    git \
-    unzip \
-    curl \
-    libicu-dev \
-    libzip-dev \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libpq-dev \
+RUN apt-get update \
+    && apt-get install -y \
+        git \
+        unzip \
+        curl \
+        libicu-dev \
+        libzip-dev \
+        libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
+        libpq-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
         intl \
@@ -35,19 +36,25 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # --------------------------------------------------
-# Copie du projet
+# Copie du projet (avec .env inclus)
 # --------------------------------------------------
 COPY . .
 
 # --------------------------------------------------
+# Définir l’environnement PROD pour éviter DebugBundle
+# --------------------------------------------------
+ENV APP_ENV=prod
+ENV APP_DEBUG=0
+
+# --------------------------------------------------
 # Création des dossiers Symfony nécessaires
-# (évite l'erreur "chmod: cannot access 'var'")
 # --------------------------------------------------
 RUN mkdir -p var/cache var/log public/uploads
 
 # --------------------------------------------------
-# Installation des dépendances PHP (prod)
-# --no-scripts évite les erreurs DebugBundle
+# Installation des dépendances PHP (prod uniquement)
+# --no-dev : pas de DebugBundle, pas de WebProfilerBundle, etc.
+# --optimize-autoloader : optimisation en prod
 # --------------------------------------------------
 RUN composer install \
     --no-dev \
@@ -78,8 +85,7 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/conf-available/*.conf
 
 # --------------------------------------------------
-# Render fournit automatiquement la variable PORT.
-# Apache écoute par défaut sur 80, ce qui fonctionne.
+# Exposer le port 80 (Render s’occupe du mapping)
 # --------------------------------------------------
 EXPOSE 80
 
