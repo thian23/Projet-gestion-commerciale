@@ -1,10 +1,12 @@
 FROM php:8.2-apache
 
-# =========================
-# SYSTEM DEPENDENCIES
-# =========================
+# --------------------------------------------------
+# Dépendances système + extensions PHP nécessaires
+# --------------------------------------------------
 RUN apt-get update && apt-get install -y \
-    git unzip curl \
+    git \
+    unzip \
+    curl \
     libicu-dev \
     libzip-dev \
     libpng-dev \
@@ -18,27 +20,35 @@ RUN apt-get update && apt-get install -y \
         pdo_pgsql \
         zip \
         gd \
-    && a2enmod rewrite
+    && a2enmod rewrite \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# =========================
-# COMPOSER
-# =========================
+# --------------------------------------------------
+# Installation de Composer
+# --------------------------------------------------
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# =========================
-# WORKDIR
-# =========================
+# --------------------------------------------------
+# Dossier de travail
+# --------------------------------------------------
 WORKDIR /var/www/html
 
-# =========================
-# COPY PROJECT
-# =========================
+# --------------------------------------------------
+# Copie du projet
+# --------------------------------------------------
 COPY . .
 
-# =========================
-# INSTALL PROD DEPENDENCIES ONLY
-# (IMPORTANT: no scripts to avoid DebugBundle crash)
-# =========================
+# --------------------------------------------------
+# Création des dossiers Symfony nécessaires
+# (évite l'erreur "chmod: cannot access 'var'")
+# --------------------------------------------------
+RUN mkdir -p var/cache var/log public/uploads
+
+# --------------------------------------------------
+# Installation des dépendances PHP (prod)
+# --no-scripts évite les erreurs DebugBundle
+# --------------------------------------------------
 RUN composer install \
     --no-dev \
     --no-interaction \
@@ -46,20 +56,20 @@ RUN composer install \
     --optimize-autoloader \
     --no-scripts
 
-# =========================
-# SYMFONY CACHE SAFE CLEAN
-# =========================
+# --------------------------------------------------
+# Nettoyage du cache Symfony
+# --------------------------------------------------
 RUN rm -rf var/cache/*
 
-# =========================
-# PERMISSIONS
-# =========================
+# --------------------------------------------------
+# Permissions
+# --------------------------------------------------
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 775 var
+    && chmod -R 775 var public/uploads
 
-# =========================
-# APACHE CONFIG (Symfony PUBLIC)
-# =========================
+# --------------------------------------------------
+# Configuration Apache pour Symfony (/public)
+# --------------------------------------------------
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
@@ -67,11 +77,13 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     /etc/apache2/apache2.conf \
     /etc/apache2/conf-available/*.conf
 
-# =========================
-# RENDER PORT SUPPORT
-# =========================
-RUN sed -i 's/80/${PORT}/g' /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf
-
+# --------------------------------------------------
+# Render fournit automatiquement la variable PORT.
+# Apache écoute par défaut sur 80, ce qui fonctionne.
+# --------------------------------------------------
 EXPOSE 80
 
+# --------------------------------------------------
+# Lancement du serveur Apache
+# --------------------------------------------------
 CMD ["apache2-foreground"]
