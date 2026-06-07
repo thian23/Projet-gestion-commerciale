@@ -32,7 +32,7 @@
         <!-- BILLING (INFORMATION PERSONNEL) -->
         <div class="card border-0 shadow-sm p-4 mb-4 rounded-4 bg-white">
           <div class="d-flex align-items-center mb-4">
-            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: rgba(209, 102, 85, 0.1); color: #D16655;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: rgba(239, 183, 193, 0.25); color: #D97C8A;">
               <i class="fas fa-user-circle fs-5"></i>
             </div>
             <h4 class="mb-0 fw-bold text-dark">Information Personnel</h4>
@@ -81,7 +81,7 @@
         <!-- PAYMENT METHODS -->
         <div class="card border-0 shadow-sm p-4 rounded-4 bg-white">
           <div class="d-flex align-items-center mb-4">
-            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: rgba(209, 102, 85, 0.1); color: #D16655;">
+            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: rgba(239, 183, 193, 0.25); color: #D97C8A;">
               <i class="fas fa-wallet fs-5"></i>
             </div>
             <h4 class="mb-0 fw-bold text-dark">Mode de paiement</h4>
@@ -90,10 +90,11 @@
           <div class="row row-cols-1 row-cols-sm-2 g-3">
             <!-- WAVE -->
             <div class="col">
-              <div class="payment-option-card card h-100 p-3 shadow-none border rounded-3 position-relative transition-all" onclick="document.getElementById('wave').click();">
+              <div class="payment-option-card payment-option-disabled card h-100 p-3 shadow-none border rounded-3 position-relative transition-all">
+                <span class="payment-soon-badge">Bientot disponible</span>
                 <div class="form-check p-0 m-0 d-flex flex-column align-items-center text-center w-100 h-100 justify-content-between">
                   <div class="w-100 text-end position-absolute top-0 end-0 p-2">
-                    <input class="form-check-input shadow-none m-0 payment-radio" type="radio" name="payment" id="wave" value="wave">
+                    <input class="form-check-input shadow-none m-0 payment-radio" type="radio" name="payment" id="wave" value="wave" disabled>
                   </div>
                   <label class="form-check-label d-block fw-bold small text-dark mt-2 w-100" for="wave">
                     <div class="mb-3 d-flex align-items-center justify-content-center" style="height: 35px;">
@@ -108,10 +109,11 @@
 
             <!-- ORANGE MONEY -->
             <div class="col">
-              <div class="payment-option-card card h-100 p-3 shadow-none border rounded-3 position-relative transition-all" onclick="document.getElementById('orange').click();">
+              <div class="payment-option-card payment-option-disabled card h-100 p-3 shadow-none border rounded-3 position-relative transition-all">
+                <span class="payment-soon-badge">Bientot disponible</span>
                 <div class="form-check p-0 m-0 d-flex flex-column align-items-center text-center w-100 h-100 justify-content-between">
                   <div class="w-100 text-end position-absolute top-0 end-0 p-2">
-                    <input class="form-check-input shadow-none m-0 payment-radio" type="radio" name="payment" id="orange" value="orange_money">
+                    <input class="form-check-input shadow-none m-0 payment-radio" type="radio" name="payment" id="orange" value="orange_money" disabled>
                   </div>
                   <label class="form-check-label d-block fw-bold small text-dark mt-2 w-100" for="orange">
                     <div class="mb-3 d-flex align-items-center justify-content-center" style="height: 35px;">
@@ -126,10 +128,11 @@
 
             <!-- CARTE BANCAIRE -->
             <div class="col">
-              <div class="payment-option-card card h-100 p-3 shadow-none border rounded-3 position-relative transition-all" onclick="document.getElementById('card').click();">
+              <div class="payment-option-card payment-option-disabled card h-100 p-3 shadow-none border rounded-3 position-relative transition-all">
+                <span class="payment-soon-badge">Bientot disponible</span>
                 <div class="form-check p-0 m-0 d-flex flex-column align-items-center text-center w-100 h-100 justify-content-between">
                   <div class="w-100 text-end position-absolute top-0 end-0 p-2">
-                    <input class="form-check-input shadow-none m-0 payment-radio" type="radio" name="payment" id="card" value="card">
+                    <input class="form-check-input shadow-none m-0 payment-radio" type="radio" name="payment" id="card" value="card" disabled>
                   </div>
                   <label class="form-check-label d-block fw-bold small text-dark mt-2 w-100" for="card">
                     <div class="mb-3 d-flex align-items-center justify-content-center text-primary" style="height: 35px;">
@@ -236,8 +239,8 @@
       transition: all 0.2s ease-in-out;
     }
     .checkout-input:focus {
-      border-color: #D16655 !important;
-      box-shadow: 0 0 0 3px rgba(209, 102, 85, 0.1) !important;
+      border-color: #D97C8A !important;
+      box-shadow: 0 0 0 3px rgba(239, 183, 193, 0.25) !important;
     }
 
     /* Cartes Sélecteurs de Paiement */
@@ -247,7 +250,7 @@
       cursor: pointer;
     }
     .payment-option-card:hover {
-      border-color: #ec6854 !important;
+      border-color: #EFB7C1 !important;
       background-color: #fff;
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -261,8 +264,8 @@
       cursor: pointer;
     }
     .payment-radio:checked {
-      background-color: #e06755 !important;
-      border-color: #D16655 !important;
+      background-color: #D97C8A !important;
+      border-color: #D97C8A !important;
     }
 
     /* Bouton d'action confirmation */
@@ -273,7 +276,7 @@
     .order-submit-btn:hover {
       opacity: 0.95;
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(209, 102, 85, 0.2);
+      box-shadow: 0 4px 12px rgba(217, 124, 138, 0.24);
     }
 
     /* Modale de Succès Raffinée */
@@ -311,12 +314,12 @@
       line-height: 1;
     }
     .success-btn {
-      background: #D16655 !important;
+      background: #D97C8A !important;
       border-radius: 8px !important;
       border: none !important;
     }
     .success-btn:hover {
-      background: #b55242 !important;
+      background: #c96f7d !important;
     }
 
     /* Conteneur dynamique liste panier */
@@ -330,6 +333,32 @@
     /* Utilitaires CSS */
     .transition-all {
       transition: all 0.2s ease-in-out;
+    }
+  .payment-option-disabled {
+      opacity: 0.72;
+      cursor: not-allowed;
+      background: #f8f8f8;
+    }
+    .payment-option-disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .payment-soon-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: #D97C8A;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
     }
 
     @keyframes popCheckout {
@@ -369,6 +398,7 @@ window.USER_CHECKOUT = JSON.parse(`{{ {
     phone: app.user ? app.user.telephone : '',
     address: app.user ? app.user.adresse : ''
 } | json_encode | e('js') }}`);
+window.CHECKOUT_CSRF_TOKEN = "{{ csrf_token('checkout') }}";
 
   document.addEventListener('DOMContentLoaded', function() {
       const paymentCards = document.querySelectorAll('.payment-option-card');
@@ -377,11 +407,17 @@ window.USER_CHECKOUT = JSON.parse(`{{ {
       function updateCardStyles() {
           paymentCards.forEach(card => {
               const radio = card.querySelector('.payment-radio');
+              if (radio && radio.disabled) {
+                  card.style.setProperty('border-color', '#dee2e6', 'important');
+                  card.style.backgroundColor = '#f8f8f8';
+                  card.style.boxShadow = 'none';
+                  return;
+              }
               if (radio && radio.checked) {
                   // Style quand l'option est sélectionnée (Bordure colorée et fond légèrement teinté)
-                  card.style.setProperty('border-color', '#D16655', 'important');
-                  card.style.backgroundColor = 'rgba(209, 102, 85, 0.05)';
-                  card.style.boxShadow = '0 4px 12px rgba(209, 102, 85, 0.1)';
+                  card.style.setProperty('border-color', '#D97C8A', 'important');
+                  card.style.backgroundColor = 'rgba(239, 183, 193, 0.16)';
+                  card.style.boxShadow = '0 4px 12px rgba(217, 124, 138, 0.16)';
               } else {
                   // Style par défaut quand l'option n'est pas sélectionnée
                   card.style.setProperty('border-color', '#dee2e6', 'important');
@@ -400,6 +436,9 @@ window.USER_CHECKOUT = JSON.parse(`{{ {
       paymentCards.forEach(card => {
           card.addEventListener('click', function(e) {
               const radio = this.querySelector('.payment-radio');
+              if (radio && radio.disabled) {
+                  return;
+              }
               // Évite de provoquer une double activation si on a cliqué directement sur le bouton radio
               if (radio && e.target !== radio) {
                   radio.checked = true;
@@ -418,3 +457,4 @@ window.USER_CHECKOUT = JSON.parse(`{{ {
 </script>
 </body>
 </html>
+  

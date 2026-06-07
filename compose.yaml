@@ -1,25 +1,39 @@
-
 services:
-###> doctrine/doctrine-bundle ###
-  database:
-    image: postgres:${POSTGRES_VERSION:-16}-alpine
+  app:
+    build: .
+    container_name: deen_shop_app
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8080}:80"
     environment:
-      POSTGRES_DB: ${POSTGRES_DB:-app}
-      # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
-      POSTGRES_USER: ${POSTGRES_USER:-app}
+      APP_ENV: prod
+      APP_DEBUG: "0"
+      APP_SECRET: "${APP_SECRET:?Set APP_SECRET before deployment}"
+      DATABASE_URL: "postgresql://${POSTGRES_USER:-deenshop}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before deployment}@database:5432/${POSTGRES_DB:-deenshop}?serverVersion=16&charset=utf8"
+      MAILER_DSN: "${MAILER_DSN:-null://null}"
+      DEFAULT_URI: "${DEFAULT_URI:-https://example.com}"
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - uploads_data:/var/www/html/public/uploads
+
+  database:
+    image: postgres:16-alpine
+    container_name: deen_shop_database
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: "${POSTGRES_DB:-deenshop}"
+      POSTGRES_USER: "${POSTGRES_USER:-deenshop}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before deployment}"
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-deenshop} -d ${POSTGRES_DB:-deenshop}"]
+      interval: 10s
       timeout: 5s
       retries: 5
-      start_period: 60s
     volumes:
-      - database_data:/var/lib/postgresql/data:rw
-      # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
-      # - ./docker/db/data:/var/lib/postgresql/data:rw
-###< doctrine/doctrine-bundle ###
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-###> doctrine/doctrine-bundle ###
-  database_data:
-###< doctrine/doctrine-bundle ###
+  uploads_data:
+  postgres_data:

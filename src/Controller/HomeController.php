@@ -47,6 +47,7 @@ class HomeController extends AbstractController
             'promoProducts' => $promoProducts,
         ]);
     }
+    
     #[Route('/contact', name: 'app_contact')]
     public function contact(): Response
     {

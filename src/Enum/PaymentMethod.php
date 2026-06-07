@@ -15,7 +15,12 @@ enum PaymentMethod: string
             self::Wave => 'Wave',
             self::OrangeMoney => 'Orange Money',
             self::Card => 'Carte bancaire',
-            self::CashOnDelivery => 'À la livraison',
+            self::CashOnDelivery => 'A la livraison',
         };
+    }
+
+    public function isAvailable(): bool
+    {
+        return $this === self::CashOnDelivery;
     }
 }

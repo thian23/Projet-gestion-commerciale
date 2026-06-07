@@ -1,13 +1,14 @@
 FROM php:8.2-apache
 
-# --------------------------------------------------
-# Dépendances système + extensions PHP nécessaires
-# --------------------------------------------------
+ENV APP_ENV=prod \
+    APP_DEBUG=0 \
+    COMPOSER_ALLOW_SUPERUSER=1 \
+    APACHE_DOCUMENT_ROOT=/var/www/html/public
+
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         git \
         unzip \
-        curl \
         libicu-dev \
         libzip-dev \
         libpng-dev \
@@ -15,87 +16,28 @@ RUN apt-get update \
         libfreetype6-dev \
         libpq-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install \
-        intl \
-        pdo \
-        pdo_pgsql \
-        zip \
-        gd \
-    && a2enmod rewrite \
-    && apt-get clean \
+    && docker-php-ext-install -j"$(nproc)" intl pdo pdo_pgsql zip gd \
+    && a2enmod rewrite headers \
+    && sed -ri "s!/var/www/html!${APACHE_DOCUMENT_ROOT}!g" /etc/apache2/sites-available/*.conf /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
+    && printf "ServerName localhost\n" > /etc/apache2/conf-available/servername.conf \
+    && a2enconf servername \
+    && apt-get purge -y --auto-remove \
     && rm -rf /var/lib/apt/lists/*
 
-# --------------------------------------------------
-# Installation de Composer
-# --------------------------------------------------
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# --------------------------------------------------
-# Dossier de travail
-# --------------------------------------------------
 WORKDIR /var/www/html
 
-# --------------------------------------------------
-# Copie du projet (avec .env inclus)
-# --------------------------------------------------
+COPY composer.json composer.lock symfony.lock ./
+RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts
+
 COPY . .
 
-# --------------------------------------------------
-# Définir l’environnement PROD pour éviter DebugBundle
-# --------------------------------------------------
-ENV APP_ENV=prod
-ENV APP_DEBUG=0
+RUN composer dump-autoload --optimize --no-dev \
+    && mkdir -p var/cache var/log public/uploads \
+    && chown -R www-data:www-data var public/uploads \
+    && chmod -R u=rwX,g=rwX,o=rX var public/uploads
 
-# --------------------------------------------------
-# Création des dossiers Symfony nécessaires
-# --------------------------------------------------
-RUN mkdir -p var/cache var/log public/uploads
-
-# --------------------------------------------------
-# Installation des dépendances PHP (prod uniquement)
-# --no-dev : pas de DebugBundle, pas de WebProfilerBundle, etc.
-# --optimize-autoloader : optimisation en prod
-# --------------------------------------------------
-RUN composer install \
-    --no-dev \
-    --no-interaction \
-    --prefer-dist \
-    --optimize-autoloader \
-    --no-scripts
-
-# --------------------------------------------------
-# Nettoyage du cache Symfony
-# --------------------------------------------------
-RUN rm -rf var/cache/*
-
-# --------------------------------------------------
-# Permissions
-# --------------------------------------------------
-
-RUN mkdir -p var/cache var/log public/uploads \
-    && chown -R www-data:www-data /var/www/html \
-    && chmod -R 777 var
-
-# --------------------------------------------------
-# Configuration Apache pour Symfony (/public)
-# --------------------------------------------------
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
-    /etc/apache2/sites-available/*.conf \
-    /etc/apache2/apache2.conf \
-    /etc/apache2/conf-available/*.conf
-
-# --------------------------------------------------
-# Exposer le port 80 (Render s’occupe du mapping)
-# --------------------------------------------------
 EXPOSE 80
 
-# --------------------------------------------------
-# Lancement du serveur Apache
-# --------------------------------------------------
 CMD ["apache2-foreground"]
-
-RUN composer dump-autoload --optimize
-RUN php bin/console cache:clear --env=prod || true
-RUN php bin/console cache:warmup --env=prod || true
