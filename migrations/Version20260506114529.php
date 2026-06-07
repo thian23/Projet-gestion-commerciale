@@ -19,7 +19,6 @@ final class Version20260506114529 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE orders ADD payment_method VARCHAR(50) DEFAULT NULL');
         $this->addSql('ALTER TABLE orders ADD guest_name VARCHAR(100) DEFAULT NULL');
         $this->addSql('ALTER TABLE orders ADD guest_phone VARCHAR(30) DEFAULT NULL');
@@ -28,10 +27,9 @@ final class Version20260506114529 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE orders DROP payment_method');
-        $this->addSql('ALTER TABLE orders DROP guest_name');
-        $this->addSql('ALTER TABLE orders DROP guest_phone');
-        $this->addSql('ALTER TABLE orders DROP guest_address');
+        $this->addSql('ALTER TABLE orders DROP COLUMN payment_method');
+        $this->addSql('ALTER TABLE orders DROP COLUMN guest_name');
+        $this->addSql('ALTER TABLE orders DROP COLUMN guest_phone');
+        $this->addSql('ALTER TABLE orders DROP COLUMN guest_address');
     }
 }

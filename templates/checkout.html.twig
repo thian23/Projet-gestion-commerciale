@@ -3,10 +3,10 @@
 
 <body>
   <!--[if lte IE 9]>
-    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
   <!--********************************
-   		Code Start From Here 
+		Code Start From Here
 	******************************** -->
   <!--==============================
 	Preloader
@@ -169,7 +169,7 @@
 
       <!-- RIGHT COLUMN (ORDER DETAIL) -->
       <div class="col-lg-5">
-        <div class="card border-0 shadow-sm p-4 rounded-4 bg-white sticky-lg-top" style="top: 20px; z-index: 10;">
+        <div class="checkout-summary-card card border-0 shadow-sm p-4 rounded-4 bg-white sticky-lg-top" style="top: 20px; z-index: 10;">
           <h4 class="mb-4 fw-bold text-dark d-flex align-items-center">
             <i class="fa-solid fa-receipt me-2 text-muted fs-5"></i> Détail de la commande
           </h4>
@@ -177,7 +177,7 @@
           <!-- CART DYNAMIC -->
           <ul class="list-group list-group-flush mb-3 dynamic-cart-container" id="checkout-cart"></ul>
           <div id="lot-box" class="p-2 border rounded-3 bg-light mb-3" style="display:none; margin-top:10px;"></div>
-          
+
           <!-- TOTAL BOX -->
           <div class="p-3 bg-light rounded-3 mb-4 border">
             <div class="d-flex justify-content-between mb-2 text-secondary">
@@ -230,11 +230,22 @@
     Styles Spécifiques
   ============================== -->
   <style>
+    .checkout-summary-card {
+      border-top: 4px solid var(--theme-color) !important;
+    }
+
+    @media (min-width: 992px) {
+      .checkout-summary-card {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+      }
+    }
+
     /* Champs Saisie Manuelle (Hors Connexion) */
     .checkout-input {
-      border: 1px solid #dee2e6 !important; 
-      background: #fff !important; 
-      color: #131313 !important; 
+      border: 1px solid #dee2e6 !important;
+      background: #fff !important;
+      color: #131313 !important;
       border-radius: 8px !important;
       transition: all 0.2s ease-in-out;
     }
@@ -255,11 +266,11 @@
       transform: translateY(-2px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
-    
+
     /* Intégration Dynamique Radio Boutons */
     .payment-radio {
-      width: 18px !important; 
-      height: 18px !important; 
+      width: 18px !important;
+      height: 18px !important;
       border-color: #dee2e6 !important;
       cursor: pointer;
     }
@@ -385,7 +396,7 @@
   <script src="/assets/js/wow.min.js"></script>
   <script src="/assets/js/jquery.nice-select.min.js"></script>
   <script src="/assets/js/nouislider.min.js"></script>
-  
+
   <!-- Fichiers logiques de traitement applicatifs -->
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/index.js"></script>
@@ -402,7 +413,7 @@ window.CHECKOUT_CSRF_TOKEN = "{{ csrf_token('checkout') }}";
 
   document.addEventListener('DOMContentLoaded', function() {
       const paymentCards = document.querySelectorAll('.payment-option-card');
-      
+
       // Fonction unique pour synchroniser l'état visuel des cartes
       function updateCardStyles() {
           paymentCards.forEach(card => {
@@ -457,4 +468,4 @@ window.CHECKOUT_CSRF_TOKEN = "{{ csrf_token('checkout') }}";
 </script>
 </body>
 </html>
-  
+

@@ -13,7 +13,7 @@ class OrderItem
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
+#[ORM\ManyToOne(inversedBy: 'items')]
 private ?Orders $order = null;
 
 #[ORM\ManyToOne]

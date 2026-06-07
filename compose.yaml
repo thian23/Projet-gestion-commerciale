@@ -9,7 +9,7 @@ services:
       APP_ENV: prod
       APP_DEBUG: "0"
       APP_SECRET: "${APP_SECRET:?Set APP_SECRET before deployment}"
-      DATABASE_URL: "postgresql://${POSTGRES_USER:-deenshop}:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before deployment}@database:5432/${POSTGRES_DB:-deenshop}?serverVersion=16&charset=utf8"
+      DATABASE_URL: "mysql://${MYSQL_USER:-deenshop}:${MYSQL_PASSWORD:?Set MYSQL_PASSWORD before deployment}@database:3306/${MYSQL_DATABASE:-deenshop}?serverVersion=8.0&charset=utf8mb4"
       MAILER_DSN: "${MAILER_DSN:-null://null}"
       DEFAULT_URI: "${DEFAULT_URI:-https://example.com}"
     depends_on:
@@ -19,21 +19,22 @@ services:
       - uploads_data:/var/www/html/public/uploads
 
   database:
-    image: postgres:16-alpine
+    image: mysql:8.0
     container_name: deen_shop_database
     restart: unless-stopped
     environment:
-      POSTGRES_DB: "${POSTGRES_DB:-deenshop}"
-      POSTGRES_USER: "${POSTGRES_USER:-deenshop}"
-      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before deployment}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE:-deenshop}"
+      MYSQL_USER: "${MYSQL_USER:-deenshop}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD:?Set MYSQL_PASSWORD before deployment}"
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD before deployment}"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-deenshop} -d ${POSTGRES_DB:-deenshop}"]
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u${MYSQL_USER:-deenshop} -p${MYSQL_PASSWORD:?Set MYSQL_PASSWORD before deployment} --silent"]
       interval: 10s
       timeout: 5s
       retries: 5
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - mysql_data:/var/lib/mysql
 
 volumes:
   uploads_data:
-  postgres_data:
+  mysql_data:

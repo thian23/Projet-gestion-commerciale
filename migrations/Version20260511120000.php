@@ -37,16 +37,7 @@ final class Version20260511120000 extends AbstractMigration
             WHERE payment_method IN ('carte', 'carte bancaire', 'credit_card')
         ");
 
-        // Modification de la colonne (PostgreSQL)
-        $this->addSql("
-            ALTER TABLE orders
-            ALTER COLUMN payment_method TYPE VARCHAR(50)
-        ");
-
-        $this->addSql("
-            ALTER TABLE orders
-            ALTER COLUMN payment_method SET NOT NULL
-        ");
+        $this->addSql('ALTER TABLE orders CHANGE payment_method payment_method VARCHAR(50) NOT NULL');
     }
 
     public function down(Schema $schema): void
@@ -64,15 +55,6 @@ final class Version20260511120000 extends AbstractMigration
             WHERE payment_method = 'orange_money'
         ");
 
-        // Rendre la colonne nullable (PostgreSQL)
-        $this->addSql("
-            ALTER TABLE orders
-            ALTER COLUMN payment_method TYPE VARCHAR(50)
-        ");
-
-        $this->addSql("
-            ALTER TABLE orders
-            ALTER COLUMN payment_method DROP NOT NULL
-        ");
+        $this->addSql('ALTER TABLE orders CHANGE payment_method payment_method VARCHAR(50) DEFAULT NULL');
     }
 }
