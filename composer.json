@@ -95,8 +95,7 @@
     "symfony": {
         "allow-contrib": false,
         "require": "7.4.*"
-    },
-    "public-dir": "public_html"
+    }
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.3",
