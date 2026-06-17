@@ -1,6 +1,6 @@
-{{ include('navbar.html.twig') }}
+﻿{{ include('navbar.html.twig') }}
 
-{% block title %}Contactez-nous | DeenShop{% endblock %}
+{% block title %}Contactez-nous | SenBazar{% endblock %}
 
 {% block body %}
 <div class="container py-5">
@@ -10,24 +10,24 @@
         <span class="badge bg-custom-light text-custom-color px-3 py-2 rounded-pill fw-bold text-uppercase mb-2" style="font-size: 12px; letter-spacing: 1px;">
             Un besoin ? Une question ?
         </span>
-        <h1 class="fw-bold text-dark display-5" style="letter-spacing: -1px;">Contactez notre équipe</h1>
-        <p class="text-muted lead">Nous vous répondons en général en moins de 24 heures. N'hésitez pas à nous écrire ou nous appeler directement.</p>
+        <h1 class="fw-bold text-dark display-5" style="letter-spacing: -1px;">Contactez notre equipe</h1>
+        <p class="text-muted lead">Nous vous repondons en general en moins de 24 heures. N'hesitez pas a nous ecrire ou nous appeler directement.</p>
     </div>
 
     <div class="row g-4 justify-content-center">
         
-        <!-- SECTION 1 : COORDONNÉES & INFOS -->
+        <!-- SECTION 1 : COORDONNEES & INFOS -->
         <div class="col-12 col-lg-4">
             <div class="d-flex flex-column gap-3 h-100">
                 
-                <!-- Téléphone -->
+                <!-- Telephone -->
                 <div class="card border-0 shadow-sm rounded-4 p-4 contact-info-card">
                     <div class="d-flex align-items-center gap-3">
                         <div class="icon-box bg-custom-light text-custom-color rounded-circle">
                             <i class="fa-solid fa-phone fs-5"></i>
                         </div>
                         <div>
-                            <h6 class="fw-bold text-dark mb-1">Téléphone & WhatsApp</h6>
+                            <h6 class="fw-bold text-dark mb-1">Telephone & WhatsApp</h6>
                             <a href="tel:+221770000000" class="text-secondary text-decoration-none">+221 77 000 00 00</a>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         </div>
                         <div>
                             <h6 class="fw-bold text-dark mb-1">Notre Boutique</h6>
-                            <p class="text-secondary mb-0">Sacré-Cœur 3, VDN<br>Dakar, Sénégal</p>
+                            <p class="text-secondary mb-0">Dakar</p>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <ul class="list-unstyled mb-0 small opacity-75 d-flex flex-column gap-2">
                         <li class="d-flex justify-content-between"><span>Lundi - Vendredi :</span> <span class="fw-bold">09h00 - 19h00</span></li>
                         <li class="d-flex justify-content-between"><span>Samedi :</span> <span class="fw-bold">10h00 - 18h00</span></li>
-                        <li class="d-flex justify-content-between"><span>Dimanche :</span> <span class="text-custom-color fw-bold">Fermé</span></li>
+                        <li class="d-flex justify-content-between"><span>Dimanche :</span> <span class="text-custom-color fw-bold">Ferme</span></li>
                     </ul>
                 </div>
 
@@ -76,9 +76,9 @@
         <div class="col-12 col-lg-8">
             <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
                 <h3 class="fw-bold text-dark mb-2">Envoyez-nous un message</h3>
-                <p class="text-muted small mb-4">Tous les champs marqués d'une astérisque (*) sont obligatoires.</p>
+                <p class="text-muted small mb-4">Tous les champs marques d'une asterisque (*) sont obligatoires.</p>
 
-                {# Gestion des messages Flash de Symfony en cas de succès #}
+                {# Gestion des messages Flash de Symfony en cas de succes #}
                 {% for label, messages in app.flashes %}
                     {% for message in messages %}
                         <div class="alert alert-{{ label === 'error' ? 'danger' : label }} alert-dismissible fade show rounded-3 mb-4" role="alert">
@@ -102,9 +102,9 @@
                             <input type="email" name="contact[email]" class="form-control border-0 bg-light rounded-3 px-3" placeholder="Ex: fatou@gmail.com" style="height: 46px;" required>
                         </div>
 
-                        <!-- Téléphone (optionnel mais recommandé au Sénégal) -->
+                        <!-- Telephone (optionnel mais recommande au Senegal) -->
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold text-secondary mb-1">Numéro de téléphone</label>
+                            <label class="form-label small fw-bold text-secondary mb-1">Numero de telephone</label>
                             <input type="tel" name="contact[phone]" class="form-control border-0 bg-light rounded-3 px-3" placeholder="Ex: 77 123 45 67" style="height: 46px;">
                         </div>
 
@@ -122,7 +122,7 @@
                         <!-- Message -->
                         <div class="col-12">
                             <label class="form-label small fw-bold text-secondary mb-1">Votre message *</label>
-                            <textarea name="contact[message]" rows="5" class="form-control border-0 bg-light rounded-3 p-3" placeholder="Écrivez votre message ici..." required></textarea>
+                            <textarea name="contact[message]" rows="5" class="form-control border-0 bg-light rounded-3 p-3" placeholder="Ecrivez votre message ici..." required></textarea>
                         </div>
 
                         <!-- Bouton d'envoi -->
@@ -139,22 +139,22 @@
     </div>
 </div>
 
-<!-- LE STYLE PERSONNALISÉ (Identité Visuelle Graphique) -->
+<!-- LE STYLE PERSONNALISE (Identite Visuelle Graphique) -->
 <style>
     /* Rappel de votre charte graphique harmonieuse */
-    .text-custom-color { color: #EFB7C1 !important; }
-    .bg-custom-light { background-color: #fdf3f3 !important; }
-    .btn-custom-primary { background-color: #EFB7C1 !important; color: #ffffff !important; border: none; transition: all 0.3s ease; }
-    .btn-custom-primary:hover { background-color: #a86266 !important; transform: translateY(-1px); }
+    .text-custom-color { color: #10B981 !important; }
+    .bg-custom-light { background-color: #F6FBF7 !important; }
+    .btn-custom-primary { background-color: #10B981 !important; color: #ffffff !important; border: none; transition: all 0.3s ease; }
+    .btn-custom-primary:hover { background-color: #15803D !important; transform: translateY(-1px); }
     
     /* Inputs au focus */
     .form-control:focus, .form-select:focus { 
         background-color: #ffffff !important; 
-        border: 1px solid #EFB7C1 !important; 
+        border: 1px solid #10B981 !important; 
         box-shadow: 0 0 0 4px rgba(217, 124, 138, 0.12) !important; 
     }
 
-    /* Boite d'icônes pour les coordonnées */
+    /* Boite d'icones pour les coordonnees */
     .icon-box {
         width: 48px;
         height: 48px;
@@ -197,3 +197,6 @@
 })()
 </script>
 {% endblock %}
+
+
+

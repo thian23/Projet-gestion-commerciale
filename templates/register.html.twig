@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+﻿{% extends 'base.html.twig' %}
 
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-<section class="min-vh-100 d-flex align-items-center py-5" style="background-color: #F8EBE5;">
+<section class="min-vh-100 d-flex align-items-center py-5" style="background-color: #F6FBF7;">
     <div class="container">
         <div class="row justify-content-center">
             {# Un peu plus large que le login pour le confort des champs #}
@@ -12,7 +12,7 @@
                 <div class="card border-0 shadow-lg rounded-4">
                     <div class="card-body p-4 p-md-5">
                         
-                        <h2 class="text-center fw-bold mb-4" style="color: #2E4A5B;">Créer un compte</h2>
+                        <h2 class="text-center fw-bold mb-4" style="color: #2E4A5B;">Creer un compte</h2>
 
                         <form method="post" action="{{ path('register') }}">
                             <div class="row g-2 mb-3">
@@ -21,13 +21,13 @@
                                     <input type="text" name="nom" class="form-control border-0 bg-light shadow-sm" placeholder="Nom" required>
                                 </div>
                                 <div class="col-6">
-                                    <label class="form-label small fw-bold text-muted">Prénom</label>
-                                    <input type="text" name="prenom" class="form-control border-0 bg-light shadow-sm" placeholder="Prénom" required>
+                                    <label class="form-label small fw-bold text-muted">Prenom</label>
+                                    <input type="text" name="prenom" class="form-control border-0 bg-light shadow-sm" placeholder="Prenom" required>
                                 </div>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label small fw-bold text-muted">Téléphone</label>
+                                <label class="form-label small fw-bold text-muted">Telephone</label>
                                 <input type="tel" name="telephone" class="form-control border-0 bg-light shadow-sm" placeholder="06..." required>
                             </div>
 
@@ -47,14 +47,14 @@
                             </div>
 
                             <button type="submit" class="btn btn-lg w-100 text-white fw-bold shadow-sm" 
-                                    style="background-color: #EFB7C1; border-radius: 10px; font-size: 1rem;">
+                                    style="background-color: #10B981; border-radius: 10px; font-size: 1rem;">
                                 S’inscrire
                             </button>
                         </form>
 
                         <div class="text-center mt-4 pt-3 border-top">
-                            <p class="text-muted small mb-0">Déjà un compte ? 
-                                <a href="{{ path('login') }}" class="fw-bold text-decoration-none" style="color: #EFB7C1;">
+                            <p class="text-muted small mb-0">Deja un compte ? 
+                                <a href="{{ path('login') }}" class="fw-bold text-decoration-none" style="color: #10B981;">
                                     Se connecter
                                 </a>
                             </p>
@@ -68,3 +68,7 @@
     </div>
 </section>
 {% endblock %}
+
+
+
+

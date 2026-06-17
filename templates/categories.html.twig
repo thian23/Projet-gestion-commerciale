@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+﻿{% extends 'base.html.twig' %}
 
-{% block title %}Catégories | DeenAdmin{% endblock %}
+{% block title %}Categories | SenBazar Admin{% endblock %}
 
 {% block body %}
 <div class="container-fluid py-4">
@@ -8,12 +8,12 @@
     <!-- HEADER -->
     <div class="row align-items-center g-3 mb-4">
         <div class="col-12 col-sm-auto">
-            <h2 class="fw-bold m-0 text-dark" style="letter-spacing: -0.5px;">Gestion des catégories</h2>
-            <p class="text-muted small mb-0">Visualisez, créez et organisez vos catégories de produits</p>
+            <h2 class="fw-bold m-0 text-dark" style="letter-spacing: -0.5px;">Gestion des categories</h2>
+            <p class="text-muted small mb-0">Visualisez, creez et organisez vos categories de produits</p>
         </div>
         <div class="col-12 col-sm text-sm-end">
-            <button class="btn rounded-pill px-4 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#categoryModal" style="font-size: 13px; height: 42px; letter-spacing: 0.5px; background-color:#EFB7C1;color:white">
-                <i class="fa-solid fa-plus me-2"></i>Ajouter une catégorie
+            <button class="btn rounded-pill px-4 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#categoryModal" style="font-size: 13px; height: 42px; letter-spacing: 0.5px; background-color:#10B981;color:white">
+                <i class="fa-solid fa-plus me-2"></i>Ajouter une categorie
             </button>
         </div>
     </div>
@@ -27,14 +27,14 @@
                         <span class="input-group-text border-0 bg-light rounded-start-pill ps-3 text-secondary">
                             <i class="fa-solid fa-magnifying-glass opacity-50"></i>
                         </span>
-                        <input type="text" id="searchCategory" class="form-control border-0 bg-light rounded-end-pill px-3" placeholder="Rechercher une catégorie par son nom..." style="height: 42px; font-size: 14px;">
+                        <input type="text" id="searchCategory" class="form-control border-0 bg-light rounded-end-pill px-3" placeholder="Rechercher une categorie par son nom..." style="height: 42px; font-size: 14px;">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- TABLEAU & RÉSULTATS -->
+    <!-- TABLEAU & RESULTATS -->
     <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
         <div class="card-body p-0">
             <div class="table-responsive-custom">
@@ -42,7 +42,7 @@
                     <thead>
                         <tr class="text-secondary border-bottom bg-light">
                             <th class="ps-4 py-3" style="width: 15%;">ID</th>
-                            <th class="py-3" style="width: 60%;">Nom de la catégorie</th>
+                            <th class="py-3" style="width: 60%;">Nom de la categorie</th>
                             <th class="py-3 text-center pe-4" style="width: 25%;">Actions</th>
                         </tr>
                     </thead>
@@ -68,7 +68,7 @@
                             <tr>
                                 <td colspan="3" class="text-center py-5 text-muted">
                                     <i class="fa-solid fa-folder-open fs-2 mb-3 opacity-20"></i>
-                                    <p class="mb-0">Aucune catégorie enregistrée pour le moment.</p>
+                                    <p class="mb-0">Aucune categorie enregistree pour le moment.</p>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -76,10 +76,10 @@
                 </table>
             </div>
 
-            <!-- Message d'absence de résultats après filtrage -->
+            <!-- Message d'absence de resultats apres filtrage -->
             <div id="noResultsMessage" class="text-center py-5 text-muted d-none">
                 <i class="fa-solid fa-magnifying-glass fs-2 mb-3 opacity-20"></i>
-                <p class="mb-0 fw-medium">Aucune catégorie ne correspond à votre recherche.</p>
+                <p class="mb-0 fw-medium">Aucune categorie ne correspond a votre recherche.</p>
             </div>
         </div>
 
@@ -97,14 +97,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow rounded-4">
             <div class="modal-header border-bottom-light px-4">
-                <h5 class="modal-title fw-bold text-dark"><i class="fa-solid fa-folder-plus me-2" style="color: #EFB7C1;"></i>Ajouter une catégorie</h5>
+                <h5 class="modal-title fw-bold text-dark"><i class="fa-solid fa-folder-plus me-2" style="color: #10B981;"></i>Ajouter une categorie</h5>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" action="{{ path('app_category_create') }}">
                 <div class="modal-body p-4">
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-secondary mb-1">Nom de la catégorie</label>
-                        <input type="text" name="category[nom]" class="form-control border-0 bg-light rounded-3 px-3" placeholder="Ex: Informatique, Mode, Beauté..." style="height: 44px;" required>
+                        <label class="form-label small fw-bold text-secondary mb-1">Nom de la categorie</label>
+                        <input type="text" name="category[nom]" class="form-control border-0 bg-light rounded-3 px-3" placeholder="Ex: Informatique, Mode, Beaute..." style="height: 44px;" required>
                     </div>
                 </div>
                 <div class="modal-footer border-0 px-4 pb-4 pt-0">
@@ -121,14 +121,14 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow rounded-4">
             <div class="modal-header border-bottom-light px-4">
-                <h5 class="modal-title fw-bold text-dark"><i class="fa-solid fa-pen-to-square me-2" style="color: #EFB7C1;"></i>Modifier la catégorie</h5>
+                <h5 class="modal-title fw-bold text-dark"><i class="fa-solid fa-pen-to-square me-2" style="color: #10B981;"></i>Modifier la categorie</h5>
                 <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form method="post" id="editCategoryForm">
                 <div class="modal-body p-4">
                     <input type="hidden" name="id" id="editCategoryId">
                     <div class="mb-3">
-                        <label class="form-label small fw-bold text-secondary mb-1">Nom révisé</label>
+                        <label class="form-label small fw-bold text-secondary mb-1">Nom revise</label>
                         <input type="text" name="nom" id="editCategoryName" class="form-control border-0 bg-light rounded-3 px-3" style="height: 44px;" required>
                     </div>
                 </div>
@@ -153,8 +153,8 @@
             <form method="post" id="deleteCategoryForm">
                 <div class="modal-body p-4 text-center">
                     <input type="hidden" name="id" id="deleteCategoryId">
-                    <h5 class="fw-bold text-dark mb-2">Êtes-vous sûr ?</h5>
-                    <p class="text-muted small mb-0">Cette action est irréversible. Les produits associés pourraient perdre leur liaison de catégorie.</p>
+                    <h5 class="fw-bold text-dark mb-2">Etes-vous sur ?</h5>
+                    <p class="text-muted small mb-0">Cette action est irreversible. Les produits associes pourraient perdre leur liaison de categorie.</p>
                 </div>
                 <div class="modal-footer border-0 p-3 bg-light d-flex justify-content-stretch rounded-bottom-4 gap-2">
                     <button type="button" class="btn btn-white border rounded-pill fw-medium flex-grow-1" data-bs-dismiss="modal" style="font-size: 14px;">Annuler</button>
@@ -165,7 +165,7 @@
     </div>
 </div>
 
-<!-- INTERACTION & LOGIQUE JS COMPLÈTE -->
+<!-- INTERACTION & LOGIQUE JS COMPLETE -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('searchCategory');
@@ -269,31 +269,31 @@ function openDeleteModal(id) {
 </script>
 
 <style>
-    /* UTILITAIRES THÈME : #EFB7C1 */
+    /* UTILITAIRES THEME : #10B981 */
     .btn-custom-primary {
-        background-color: #EFB7C1 !important;
+        background-color: #10B981 !important;
         color: #ffffff !important;
         border: none;
     }
     .btn-custom-primary:hover {
-        background-color: #a86266 !important;
+        background-color: #15803D !important;
     }
     .btn-action-edit {
-        background-color: #fdf3f3 !important;
-        color: #EFB7C1 !important;
-        border: 1px solid #f5dbdc !important;
+        background-color: #F6FBF7 !important;
+        color: #10B981 !important;
+        border: 1px solid #DDEFE3 !important;
     }
     .btn-action-edit:hover {
-        background-color: #EFB7C1 !important;
+        background-color: #10B981 !important;
         color: #ffffff !important;
     }
     .btn-active-page {
-        background-color: #EFB7C1 !important;
+        background-color: #10B981 !important;
     }
     .form-control:focus { 
         background-color: #ffffff !important; 
-        border: 1px solid #EFB7C1 !important; 
-        box-shadow: 0 0 0 3px rgba(217, 124, 138, 0.15) !important; 
+        border: 1px solid #10B981 !important; 
+        box-shadow: 0 0 0 3px rgba(217, 124, 138, 0.12) !important; 
     }
 
     /* STRUCTURE DE COMPOSANTS GENERALE */
@@ -341,3 +341,5 @@ function openDeleteModal(id) {
     }
 </style>
 {% endblock %}
+
+

@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+﻿{% extends 'base.html.twig' %}
 
-{% block title %}Produits | DeenAdmin{% endblock %}
+{% block title %}Produits | SenBazar Admin{% endblock %}
 
 {% block body %}
 <div class="container-fluid py-4">
@@ -9,11 +9,11 @@
     <div class="row align-items-center g-3 mb-4">
         <div class="col-12 col-sm-auto">
             <h2 class="fw-bold m-0 text-dark" style="letter-spacing: -0.5px;">Gestion des produits</h2>
-            <p class="text-muted small mb-0">Visualisez, filtrez et mettez à jour votre inventaire de produits</p>
+            <p class="text-muted small mb-0">Visualisez, filtrez et mettez a jour votre inventaire de produits</p>
         </div>
         <div class="col-12 col-sm text-sm-end">
             <button class="btn btn-dark rounded-pill px-4 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#productModal" style="font-size: 13px; height: 42px; letter-spacing: 0.5px;">
-                <i class="fa-solid fa-plus me-2"></i>Créer un produit
+                <i class="fa-solid fa-plus me-2"></i>Creer un produit
             </button>
         </div>
     </div>
@@ -35,7 +35,7 @@
                 <!-- CATEGORY -->
                 <div class="col-12 col-sm-4 col-md-3">
                     <select id="filterCategory" class="form-select border-0 bg-light rounded-pill px-3" style="height: 42px; font-size: 14px;">
-                        <option value="">Toutes les catégories</option>
+                        <option value="">Toutes les categories</option>
                         {% set categoriesList = [] %}
                         {% for p in products %}
                             {% if p.category and p.category.nom not in categoriesList %}
@@ -60,7 +60,7 @@
                     <select id="filterPromo" class="form-select border-0 bg-light rounded-pill px-3" style="height: 42px; font-size: 14px;">
                         <option value="">Tags (Tous)</option>
                         <option value="promo">Promotion</option>
-                        <option value="new">Nouveauté</option>
+                        <option value="new">Nouveaute</option>
                         <option value="best">Best seller</option>
                     </select>
                 </div>
@@ -68,7 +68,7 @@
         </div>
     </div>
 
-    <!-- TABLEAU & RÉSULTATS -->
+    <!-- TABLEAU & RESULTATS -->
     <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
         <div class="card-body p-0">
             <div class="table-responsive-custom">
@@ -78,7 +78,7 @@
                             <th class="ps-4 py-3" style="width: 35%;">Produit</th>
                             <th class="py-3" style="width: 15%;">Prix</th>
                             <th class="py-3" style="width: 15%;">Stock</th>
-                            <th class="py-3" style="width: 15%;">Catégorie</th>
+                            <th class="py-3" style="width: 15%;">Categorie</th>
                             <th class="py-3" style="width: 10%;">Tags</th>
                             <th class="py-3 text-center pe-4" style="width: 10%;">Actions</th>
                         </tr>
@@ -125,7 +125,7 @@
                                 </td>
 
                                 <!-- CATEGORIE -->
-                                <td data-label="Catégorie" class="text-secondary fw-medium">
+                                <td data-label="Categorie" class="text-secondary fw-medium">
                                     {{ p.category ? p.category.nom : '---' }}
                                 </td>
 
@@ -153,10 +153,10 @@
                                         <button class="btn btn-icon-action btn-edit" data-bs-toggle="modal" data-bs-target="#edit{{ p.id }}" title="Modifier">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </button>
-                                        <button class="btn btn-icon-action btn-lots" data-bs-toggle="modal" data-bs-target="#lotsModal{{ p.id }}" title="Gérer les lots">
+                                        <button class="btn btn-icon-action btn-lots" data-bs-toggle="modal" data-bs-target="#lotsModal{{ p.id }}" title="Gerer les lots">
                                             <i class="fa-solid fa-boxes-stacked"></i>
                                         </button>
-                                        <!-- MODIFIÉ ICI : Remplacement par un bouton déclencheur de modal de confirmation globale -->
+                                        <!-- MODIFIE ICI : Remplacement par un bouton declencheur de modal de confirmation globale -->
                                         <button type="button" class="btn btn-icon-action btn-delete" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" data-url="{{ path('app_product_delete', {id: p.id}) }}" data-title="{{ p.titre }}" title="Supprimer">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
@@ -167,7 +167,7 @@
                             <tr>
                                 <td colspan="6" class="text-center py-5 text-muted">
                                     <i class="fa-solid fa-box-open fs-2 mb-3 opacity-20"></i>
-                                    <p class="mb-0">Aucun produit enregistré pour le moment.</p>
+                                    <p class="mb-0">Aucun produit enregistre pour le moment.</p>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -178,7 +178,7 @@
             <!-- Message de filtrage vide -->
             <div id="noResultsMessage" class="text-center py-5 text-muted d-none">
                 <i class="fa-solid fa-magnifying-glass fs-2 mb-3 opacity-20"></i>
-                <p class="mb-0 fw-medium">Aucun produit ne correspond à vos critères de recherche.</p>
+                <p class="mb-0 fw-medium">Aucun produit ne correspond a vos criteres de recherche.</p>
             </div>
         </div>
 
@@ -225,7 +225,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label small fw-bold text-secondary mb-1">Quantité en stock</label>
+                        <label class="form-label small fw-bold text-secondary mb-1">Quantite en stock</label>
                         <input name="product[stock]" value="{{ p.stock }}" class="form-control border-0 bg-light rounded-3 px-3" style="height: 44px;" required>
                     </div>
 
@@ -241,7 +241,7 @@
                                 <input type="checkbox" name="product[promotion]" class="form-check-input form-check-custom" {{ p.promotion ? 'checked' : '' }}>
                             </div>
                             <div class="col-6 col-md-3">
-                                <label class="small fw-bold d-block mb-1 text-muted">Nouveauté</label>
+                                <label class="small fw-bold d-block mb-1 text-muted">Nouveaute</label>
                                 <input type="checkbox" name="product[nouveaute]" class="form-check-input form-check-custom" {{ p.nouveaute ? 'checked' : '' }}>
                             </div>
                             <div class="col-6 col-md-3">
@@ -283,7 +283,7 @@
                         <input type="text" name="lots[{{ loop.index0 }}][nom]" value="{{ lot.nom }}" class="form-control border-0 bg-white" placeholder="Nom du lot" required>
                     </div>
                     <div class="col-6 col-md-3">
-                        <input type="number" name="lots[{{ loop.index0 }}][quantite]" value="{{ lot.quantite }}" class="form-control border-0 bg-white" placeholder="Quantité" required>
+                        <input type="number" name="lots[{{ loop.index0 }}][quantite]" value="{{ lot.quantite }}" class="form-control border-0 bg-white" placeholder="Quantite" required>
                     </div>
                     <div class="col-6 col-md-3">
                         <input type="number" name="lots[{{ loop.index0 }}][prix]" value="{{ lot.prix }}" class="form-control border-0 bg-white" placeholder="Prix" required>
@@ -311,7 +311,7 @@
 </div>
 {% endfor %}
 
-<!-- MODAL : CRÉATION -->
+<!-- MODAL : CREATION -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 shadow rounded-4">
@@ -329,7 +329,7 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label small fw-bold text-secondary mb-1">Catégorie</label>
+                            <label class="form-label small fw-bold text-secondary mb-1">Categorie</label>
                             <select name="product[category]" class="form-select border-0 bg-light rounded-3 px-3" style="height: 44px;">
                                 {% for c in categories %}
                                     <option value="{{ c.id }}">{{ c.nom }}</option>
@@ -339,7 +339,7 @@
 
                         <div class="col-12">
                             <label class="form-label small fw-bold text-secondary mb-1">Description</label>
-                            <textarea name="product[description]" rows="3" class="form-control border-0 bg-light rounded-3 p-3" placeholder="Détails du produit..."></textarea>
+                            <textarea name="product[description]" rows="3" class="form-control border-0 bg-light rounded-3 p-3" placeholder="Details du produit..."></textarea>
                         </div>
 
                         <div class="col-md-6">
@@ -349,7 +349,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label small fw-bold text-secondary mb-1">Stock Initial</label>
-                            <input name="product[stock]" class="form-control border-0 bg-light rounded-3 px-3" placeholder="Quantité" style="height: 44px;">
+                            <input name="product[stock]" class="form-control border-0 bg-light rounded-3 px-3" placeholder="Quantite" style="height: 44px;">
                         </div>
 
                         <div class="col-12">
@@ -364,7 +364,7 @@
                                     <input type="checkbox" name="product[promotion]" class="form-check-input form-check-custom">
                                 </div>
                                 <div class="col-6 col-md-3">
-                                    <label class="small fw-bold d-block mb-1 text-muted">Nouveauté</label>
+                                    <label class="small fw-bold d-block mb-1 text-muted">Nouveaute</label>
                                     <input type="checkbox" name="product[nouveaute]" class="form-check-input form-check-custom">
                                 </div>
                                 <div class="col-6 col-md-3">
@@ -382,14 +382,14 @@
 
                 <div class="modal-footer border-0 px-4 pb-4 pt-0">
                     <button type="button" class="btn btn-light rounded-pill fw-semibold px-4" data-bs-dismiss="modal">Fermer</button>
-                    <button type="submit" class="btn btn-custom-primary rounded-pill fw-bold px-5">Confirmer la création</button>
+                    <button type="submit" class="btn btn-custom-primary rounded-pill fw-bold px-5">Confirmer la creation</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-<!-- NOUVEAU MODAL GLOBAL : CONFIRMATION DE SUPPRESSION (ÉLÉGANT & COHÉRENT) -->
+<!-- NOUVEAU MODAL GLOBAL : CONFIRMATION DE SUPPRESSION (ELEGANT & COHERENT) -->
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="max-width: 400px;">
         <div class="modal-content border-0 shadow rounded-4">
@@ -398,7 +398,7 @@
                     <i class="fa-solid fa-circle-exclamation fs-1"></i>
                 </div>
                 <h5 class="fw-bold text-dark mb-2">Supprimer le produit ?</h5>
-                <p class="text-muted small mb-0">Êtes-vous sûr de vouloir supprimer définitivement <span id="deleteProductTitle" class="fw-bold text-dark"></span> ? Cette action est irréversible.</p>
+                <p class="text-muted small mb-0">Etes-vous sur de vouloir supprimer definitivement <span id="deleteProductTitle" class="fw-bold text-dark"></span> ? Cette action est irreversible.</p>
             </div>
             <div class="modal-footer border-0 d-flex justify-content-center gap-2 pb-4 pt-0">
                 <button type="button" class="btn btn-light rounded-pill fw-semibold px-4" data-bs-dismiss="modal">Annuler</button>
@@ -504,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const confirmDeleteModal = document.getElementById('confirmDeleteModal');
     if (confirmDeleteModal) {
         confirmDeleteModal.addEventListener('show.bs.modal', (event) => {
-            const button = event.relatedTarget; // Le bouton cliqué
+            const button = event.relatedTarget; // Le bouton clique
             const deleteUrl = button.getAttribute('data-url'); 
             const productTitle = button.getAttribute('data-title'); 
 
@@ -529,7 +529,7 @@ function addLot(productId) {
             <input type="text" name="lots[${index}][nom]" class="form-control border-0 bg-white" placeholder="Nom du lot (ex: Lot 4)" required>
         </div>
         <div class="col-6 col-md-3">
-            <input type="number" name="lots[${index}][quantite]" class="form-control border-0 bg-white" placeholder="Quantité" min="1" required>
+            <input type="number" name="lots[${index}][quantite]" class="form-control border-0 bg-white" placeholder="Quantite" min="1" required>
         </div>
         <div class="col-6 col-md-3">
             <input type="number" name="lots[${index}][prix]" class="form-control border-0 bg-white" placeholder="Prix" min="0" step="0.01" required>
@@ -566,26 +566,26 @@ function reindexLots(container) {
 </script>
 
 <style>
-    /* UTILS THÈME COULEUR COHÉRENTE : #EFB7C1 */
-    .text-custom-color { color: #EFB7C1 !important; }
-    .btn-custom-primary { background-color: #EFB7C1 !important; color: #ffffff !important; border: none; }
-    .btn-custom-primary:hover { background-color: #a86266 !important; }
-    .btn-active-page { background-color: #EFB7C1 !important; }
+    /* UTILS THEME COULEUR COHERENTE : #10B981 */
+    .text-custom-color { color: #10B981 !important; }
+    .btn-custom-primary { background-color: #10B981 !important; color: #ffffff !important; border: none; }
+    .btn-custom-primary:hover { background-color: #15803D !important; }
+    .btn-active-page { background-color: #10B981 !important; }
     
     .form-control:focus, .form-select:focus { 
         background-color: #ffffff !important; 
-        border: 1px solid #EFB7C1 !important; 
-        box-shadow: 0 0 0 3px rgba(217, 124, 138, 0.15) !important; 
+        border: 1px solid #10B981 !important; 
+        box-shadow: 0 0 0 3px rgba(217, 124, 138, 0.12) !important; 
     }
-    .form-check-custom:checked { background-color: #EFB7C1 !important; border-color: #EFB7C1 !important; }
+    .form-check-custom:checked { background-color: #10B981 !important; border-color: #10B981 !important; }
 
     /* BOUTONS D'ICONES ACTION ROND */
     .btn-icon-action {
         width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;
         border-radius: 50%; font-size: 13px; border: 1px solid #e2e8f0; background-color: #ffffff; transition: all 0.2s ease;
     }
-    .btn-edit { color: #EFB7C1; background-color: #fdf3f3; border-color: #f5dbdc; }
-    .btn-edit:hover { background-color: #EFB7C1; color: #ffffff; }
+    .btn-edit { color: #10B981; background-color: #F6FBF7; border-color: #DDEFE3; }
+    .btn-edit:hover { background-color: #10B981; color: #ffffff; }
     .btn-lots { color: #198754; background-color: #e8f5e9; border-color: #c8e6c9; }
     .btn-lots:hover { background-color: #198754; color: #ffffff; }
     .btn-delete { color: #dc3545; background-color: #fde8e8; border-color: #f9d5d5; border: 1px solid #f9d5d5; }
@@ -597,7 +597,7 @@ function reindexLots(container) {
     .bg-success-subtle { background-color: #e8f5e9 !important; }
     .bg-danger-subtle { background-color: #fee2e2 !important; }
 
-    /* STRUCTURE DE FLEXIBILITÉ ET RESPONSIVE POUR MOBILE SM */
+    /* STRUCTURE DE FLEXIBILITE ET RESPONSIVE POUR MOBILE SM */
     @media (max-width: 575.98px) {
         .table-responsive-custom table, 
         .table-responsive-custom thead, 
@@ -621,3 +621,5 @@ function reindexLots(container) {
     }
 </style>
 {% endblock %}
+
+

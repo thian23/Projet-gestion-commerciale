@@ -1,4 +1,4 @@
-{{ include('navbar.html.twig') }}
+﻿{{ include('navbar.html.twig') }}
 
 
 <body class="cart-page">
@@ -33,16 +33,16 @@
         <!-- LISTE PANIER -->
         <div class="col-lg-8">
           <div class="card deen-cart-card border-0 shadow-sm rounded-4 overflow-hidden">
-            <!-- En-tête masqué sur mobile, visible sur PC -->
+            <!-- En-tete masque sur mobile, visible sur PC -->
             <div class="deen-cart-heading d-none d-md-grid p-3 text-muted fw-bold small bg-light border-bottom text-uppercase" style="letter-spacing: 0.5px;">
               <div>Produit</div>
-              <div class="text-center">Quantité</div>
+              <div class="text-center">Quantite</div>
               <div class="text-center">Total</div>
               <div></div>
             </div>
             
             <div id="cart-container" class="list-group list-group-flush p-3 bg-white">
-              <!-- Géré dynamiquement par renderCart() -->
+              <!-- Gere dynamiquement par renderCart() -->
             </div>
           </div>
 
@@ -53,10 +53,10 @@
           </div>
         </div>
 
-        <!-- RÉSUMÉ DE LA COMMANDE -->
+        <!-- RESUME DE LA COMMANDE -->
         <div class="col-lg-4">
           <div class="card deen-cart-summary border-0 shadow-sm p-4 rounded-4 position-sticky" style="top: 110px;">
-            <h5 class="fw-bold mb-4 border-bottom pb-3">Résumé de commande</h5>
+            <h5 class="fw-bold mb-4 border-bottom pb-3">Resume de commande</h5>
 
             <ul class="list-group list-group-flush mb-4">
               <li class="list-group-item d-flex justify-content-between px-0 border-0 bg-transparent">
@@ -82,7 +82,7 @@
   {{ include('footer.html.twig') }}
 
   <!--==============================
-    Styles Spécifiques au Panier
+    Styles Specifiques au Panier
   ============================== -->
   <style>
     /* Structure Grille Panier pour PC */
@@ -104,7 +104,7 @@
         box-shadow: 0 6px 15px rgba(0,0,0,0.05) !important;
     }
 
-    /* Boutons Quantité Modernisés */
+    /* Boutons Quantite Modernises */
     .qty-btn-group .btn {
         border-color: #dee2e6;
         background-color: #fff;
@@ -145,7 +145,7 @@
     }
     .lot-card.active {
         border-color: var(--theme-color) !important;
-        background-color: rgba(181, 124, 124, 0.04); /* Teinte très légère basée sur votre couleur principale */
+        background-color: rgba(181, 124, 124, 0.04); /* Teinte tres legere basee sur votre couleur principale */
         color: #000;
     }
     .lot-card.active::after {
@@ -178,7 +178,7 @@
         letter-spacing: 0.5px;
     }
     .deen-checkout-btn:hover {
-        background-color: #9e6464; /* Assombrissement léger pour l'effet survol */
+        background-color: #9e6464; /* Assombrissement leger pour l'effet survol */
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(181, 124, 124, 0.3) !important;
     }
@@ -208,8 +208,9 @@
   <script src="assets/js/wow.min.js"></script>
   <script src="assets/js/jquery.nice-select.min.js"></script>
   <script src="assets/js/nouislider.min.js"></script>
-  <!-- Main & Custom Logic Js Files (Placés à la fin) -->
+  <!-- Main & Custom Logic Js Files (Places a la fin) -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/index.js"></script>
 </body>
 </html>
+

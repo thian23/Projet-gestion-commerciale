@@ -43,6 +43,13 @@ private bool $bestSeller = false;
 
 #[ORM\ManyToOne]
 private ?Category $category = null;
+
+#[ORM\ManyToOne(inversedBy: 'products')]
+private ?Vendeur $vendeur = null;
+
+#[ORM\Column(nullable: true)]
+private ?float $noteMoyenne = null;
+
 #[ORM\Column]
 private \DateTimeImmutable $createdAt;
 
@@ -66,6 +73,8 @@ public function __construct()
     {
         return $this->id;
     }
+    public function getNom(): ?string { return $this->titre; }
+public function setNom(string $nom): static { $this->titre = $nom; return $this; }
     public function getTitre(): ?string { return $this->titre; }
 public function setTitre(string $titre): static { $this->titre = $titre; return $this; }
 
@@ -92,6 +101,12 @@ public function setBestSeller(bool $b): static { $this->bestSeller = $b; return 
 
 public function getCategory(): ?Category { return $this->category; }
 public function setCategory(?Category $category): static { $this->category = $category; return $this; }
+
+public function getVendeur(): ?Vendeur { return $this->vendeur; }
+public function setVendeur(?Vendeur $vendeur): static { $this->vendeur = $vendeur; return $this; }
+
+public function getNoteMoyenne(): ?float { return $this->noteMoyenne; }
+public function setNoteMoyenne(?float $noteMoyenne): static { $this->noteMoyenne = $noteMoyenne; return $this; }
 
 public function isPhares(): bool { return $this->phares; }
 public function setPhares(bool $p): static { $this->phares = $p; return $this; }

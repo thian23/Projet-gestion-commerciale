@@ -44,6 +44,8 @@ public function setQuantity(int $q): static { $this->quantity = $q; return $this
 
 public function getPrice(): float { return $this->price; }
 public function setPrice(float $p): static { $this->price = $p; return $this; }
+public function getPrixUnitaire(): float { return $this->price; }
+public function setPrixUnitaire(float $prixUnitaire): static { $this->price = $prixUnitaire; return $this; }
 
 public function getProductName(): ?string { return $this->productName; }
 public function setProductName(string $p): static { $this->productName = $p; return $this; }

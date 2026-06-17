@@ -5,7 +5,8 @@ namespace App\Enum;
 enum OrderStatus: string
 {
     case En_Attente = 'en_attente';
-    case Payer = 'payer';
-    case Expedier = 'expedier';
-    case Annuler = 'annuler';
+    case Payee = 'payee';
+    case Expediee = 'expediee';
+    case Livree = 'livree';
+    case Annulee = 'annulee';
 }

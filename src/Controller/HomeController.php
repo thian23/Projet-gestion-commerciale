@@ -16,38 +16,27 @@ class HomeController extends AbstractController
         CategoryRepository $categoryRepository,
         ProductRepository $productRepository,
         AuthService $authService
-
     ): Response {
-        // 1. Récupérer toutes les catégories pour le carrousel du haut
         $categories = $categoryRepository->findAll();
-
-        // 2. Les 3 derniers produits pour la sidebar
         $lastProducts = $productRepository->findBy([], ['id' => 'DESC'], 3);
-
-        // 3. Produits phares
         $featuredProducts = $productRepository->findBy(['phares' => true], ['id' => 'DESC'], 6);
-       $promoProducts = $productRepository->findBy([
-            'promotion' => true
-        ], ['id' => 'DESC']);
+        $promoProducts = $productRepository->findBy(['promotion' => true], ['id' => 'DESC']);
 
-        // 4. Produits par catégories spécifiques
-        // Note: Remplace 'nom' par le nom exact de ton champ en base de données
-        $boxCadeaux = $productRepository->findProductsByCategoryName('Box Cadeaux');
-        $islamicBooks = $productRepository->findProductsByCategoryName('Livres Islamiques');
-        $scienceBooks = $productRepository->findProductsByCategoryName('Science');
-
+        $homeProducts = $productRepository->findProductsByCategoryName('Maison');
+        $techProducts = $productRepository->findProductsByCategoryName('Electronique');
+        $sportProducts = $productRepository->findProductsByCategoryName('Sport et Fitness');
 
         return $this->render('index.html.twig', [
             'categories' => $categories,
             'lastProducts' => $lastProducts,
             'featuredProducts' => $featuredProducts,
-            'boxCadeaux' => $boxCadeaux,
-            'islamicBooks' => $islamicBooks,
-            'scienceBooks' => $scienceBooks,
+            'homeProducts' => $homeProducts,
+            'techProducts' => $techProducts,
+            'sportProducts' => $sportProducts,
             'promoProducts' => $promoProducts,
         ]);
     }
-    
+
     #[Route('/contact', name: 'app_contact')]
     public function contact(): Response
     {

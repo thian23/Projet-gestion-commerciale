@@ -1,4 +1,4 @@
-<div class="widget product-sidebar shadow-sm p-4"
+﻿<div class="widget product-sidebar shadow-sm p-4"
      style="background:#fff; border-radius:15px; border:1px solid #f0f0f0;">
 
     <h3 class="widget_title mb-4"
@@ -25,14 +25,14 @@
                         {{ product.titre }}
                     </h6>
 
-                    <div class="fw-bold mb-2" style="color:var(--theme-color); font-size:15px;">
+                    <div class="fw-bold mb-2" style="color:#F59E0B; font-size:15px;">
                         {{ product.prix|number_format(0, ',', ' ') }} FCFA
                     </div>
 
                     <a href="{{ path('product_show', {id: product.id}) }}"
                        class="text-decoration-underline"
-                       style="font-size:12px; font-weight:600;">
-                        Voir détails
+                       style="font-size:12px; font-weight:600; color: #F59E0B">
+                        Voir details
                     </a>
 
                 </div>
@@ -43,3 +43,4 @@
 
     </div>
 </div>
+

@@ -43,6 +43,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Vendeur::class, cascade: ['persist', 'remove'])]
+    private ?Vendeur $vendeur = null;
+
     #[ORM\Column]
 private \DateTimeImmutable $createdAt;
 
@@ -83,6 +87,18 @@ public function setTelephone(string $telephone): static { $this->telephone = $te
 
 public function getAdresse(): ?string { return $this->adresse; }
 public function setAdresse(string $adresse): static { $this->adresse = $adresse; return $this; }
+
+public function getVendeur(): ?Vendeur { return $this->vendeur; }
+public function setVendeur(?Vendeur $vendeur): static
+{
+    $this->vendeur = $vendeur;
+
+    if ($vendeur !== null && $vendeur->getUser() !== $this) {
+        $vendeur->setUser($this);
+    }
+
+    return $this;
+}
 
     /**
      * A visual identifier that represents this user.

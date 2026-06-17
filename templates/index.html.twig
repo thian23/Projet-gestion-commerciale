@@ -14,7 +14,7 @@
   Hero Area
   ==============================-->
 <section class="hero-layout1 home-hero d-flex align-items-center"
-         style="background: url('assets/img/hero/headerNoir.png') no-repeat center center; background-size: cover; width: 100%; min-height: 85vh; position: relative;">
+         style="background: url('assets/img/hearo.jpeg') no-repeat center center; background-size: cover; width: 100%; min-height: 85vh; position: relative;">
 
     <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(0, 0, 0, 0.42); z-index: 1;"></div>
 
@@ -25,23 +25,23 @@
 
                 <!-- TITRE PRINCIPAL (H1 SEO) -->
                 <h1 class="display-3 fw-bold mb-2 text-white wow animate__fadeInUp" data-wow-delay="0.50s">
-                    <span style="color: var(--theme-color);">Deen</span> Shop
+                    SenBazar
                 </h1>
 
                 <!-- SOUS-TITRE (H2 SEO) -->
                 <h2 class="h4 mb-4 wow animate__fadeInUp text-white" data-wow-delay="0.70s" style="opacity: 0.9;">
-                    Boutique Islamique au Sénégal – Coran, Livres Islamiques & Accessoires Musulmans
+                    Marketplace senegalaise pour produits locaux, boutiques et promotions
                 </h2>
 
-                <!-- DESCRIPTION SEO (LONGUE TRAÎNE) -->
+                <!-- DESCRIPTION SEO (LONGUE TRAAZNE) -->
                 <p class="lead mb-5 fw-bold wow animate__fadeInUp" data-wow-delay="0.85s" style="max-width: 500px;">
-                    Achetez vos Corans, livres islamiques, parfums et accessoires musulmans à Dakar et partout au Sénégal. Livraison rapide et produits authentiques pour votre spiritualité.
+                    Achetez facilement aupres de vendeurs senegalais, comparez les offres et profitez d'une livraison rapide a Dakar et partout au Senegal.
                 </p>
 
                 <!-- CTA -->
                 <div class="wow animate__flipInX" data-wow-delay="1s">
                     <a class="vs-btn" href="{{ path('app_shop') }}">
-                        Acheter Coran & Produits Islamiques
+                        Explorer SenBazar
                     </a>
                 </div>
 
@@ -102,34 +102,34 @@
 
         <div class="title-area2 home-section-title animation-style1 title-anime d-flex align-items-center justify-content-between">
             <div>
-                <span class="sec-subtitle" style="color:var(--theme-color);;">Pour nos petits coeurs</span>
-                <h2 class="sec-title title-anime__title">Éveil & Éducation Islamique</h2>
+                <span class="sec-subtitle" style="color:var(--theme-color);;">Equipements pour la maison</span>
+                <h2 class="sec-title title-anime__title">Maison</h2>
             </div>
-            <a class="vs-btn d-none d-md-inline-block" href="{{ path('app_shop', { category_name: 'Livres Islamiques' }) }}">
-                Voir toute la collection Kids
+            <a class="vs-btn d-none d-md-inline-block" href="{{ path('app_shop', { category_name: 'Maison' }) }}">
+                Voir Maison
             </a>
         </div>
 
-        <div class="row vs-carousel book-carousel g-4"
-             data-slide-show="6"
-             data-xl-slide-show="5"
-             data-ml-slide-show="4"
-             data-lg-slide-show="4"
-             data-md-slide-show="3"
-             data-sm-slide-show="2"
+        <div class="row vs-carousel book-carousel g-4 deen-home-product-carousel"
+             data-slide-show="4"
+             data-xl-slide-show="4"
+             data-ml-slide-show="3"
+             data-lg-slide-show="3"
+             data-md-slide-show="2"
+             data-sm-slide-show="1"
              data-autoplay="true"
              data-speed="1200"
              data-infinite="true"
              id="kids-carousel">
 
-            {% for product in islamicBooks %}
+            {% for product in homeProducts %}
                  {% include 'components/product_card.html.twig' with { product: product } %}
 
 
             {% else %}
 
                 <div class="col-12 text-center py-5">
-                    <p>Aucun produit disponible dans cette catégorie.</p>
+                    <p>Aucun produit disponible dans cette categorie.</p>
                 </div>
 
             {% endfor %}
@@ -155,34 +155,34 @@
 
         <div class="title-area2 home-section-title animation-style1 title-anime d-flex align-items-center justify-content-between mb-5">
             <div>
-                <span class="sec-subtitle" style="color:var(--theme-color);;">Nourrir l'esprit</span>
-                <h2 class="sec-title title-anime__title">Science, Foi & Spiritualité</h2>
+                <span class="sec-subtitle" style="color:var(--theme-color);;">High-tech et accessoires</span>
+                <h2 class="sec-title title-anime__title">Electronique & technologie</h2>
             </div>
-            <a class="vs-btn d-none d-md-inline-block" href="{{ path('app_shop', { category_name: 'Science' }) }}">
-                Explorer la Bibliothèque
+            <a class="vs-btn d-none d-md-inline-block" href="{{ path('app_shop', { category_name: 'Electronique' }) }}">
+                Explorer la tech
             </a>
         </div>
 
-        <div class="row vs-carousel book-carousel g-4"
-             data-slide-show="6"
-             data-xl-slide-show="5"
-             data-ml-slide-show="4"
-             data-lg-slide-show="4"
-             data-md-slide-show="3"
-             data-sm-slide-show="2"
+        <div class="row vs-carousel book-carousel g-4 deen-home-product-carousel"
+             data-slide-show="4"
+             data-xl-slide-show="4"
+             data-ml-slide-show="3"
+             data-lg-slide-show="3"
+             data-md-slide-show="2"
+             data-sm-slide-show="1"
              data-autoplay="true"
              data-speed="1200"
              data-infinite="true"
              id="spiritual-carousel">
 
-            {% for product in scienceBooks %}
+            {% for product in techProducts %}
 
                     {% include 'components/product_card.html.twig' with { product: product } %}
 
             {% else %}
 
                 <div class="col-12 text-center py-5">
-                    <p>Aucun produit disponible dans cette catégorie.</p>
+                    <p>Aucun produit disponible dans cette categorie.</p>
                 </div>
 
             {% endfor %}
@@ -213,33 +213,34 @@
         <span class="border-line d-xxl-block d-none"></span>
 
         <h2 class="sec-title title-anime__title">
-            Nos Packs Cadeaux
+            Sport, fitness & nutrition
         </h2>
 
-        <a class="vs-btn" href="{{ path('app_shop', { category_name: 'Box Cadeaux' }) }}">
+        <a class="vs-btn" href="{{ path('app_shop', { category_name: 'Sport et Fitness' }) }}">
             Voir plus
         </a>
     </div>
 
-    <div class="row vs-carousel g-4"
-         data-slide-show="6"
-         data-xl-slide-show="5"
-         data-ml-slide-show="4"
-         data-lg-slide-show="4"
-         data-md-slide-show="3"
-         data-sm-slide-show="2"
+    <div class="row vs-carousel book-carousel g-4 deen-home-product-carousel"
+         data-slide-show="4"
+         data-xl-slide-show="4"
+         data-ml-slide-show="3"
+         data-lg-slide-show="3"
+         data-md-slide-show="2"
+         data-sm-slide-show="1"
          data-autoplay="true"
          data-speed="1200"
-         data-infinite="true">
+         data-infinite="true"
+         id="sport-carousel">
 
-        {% for product in boxCadeaux %}
+        {% for product in sportProducts %}
 
                 {% include 'components/product_card.html.twig' with { product: product } %}
 
         {% else %}
 
             <div class="col-12 text-center py-5">
-                <p>Aucune box disponible pour le moment.</p>
+                <p>Aucun produit sport disponible pour le moment.</p>
             </div>
 
         {% endfor %}
@@ -249,11 +250,11 @@
     <div class="arraw-area mt-40">
       <div class="d-flex justify-content-center gap-2">
 
-        <button class="icon-btn" data-slick-prev=".vs-carousel">
+        <button class="icon-btn" data-slick-prev="#sport-carousel">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
 
-        <button class="icon-btn" data-slick-next=".vs-carousel">
+        <button class="icon-btn" data-slick-next="#sport-carousel">
           <i class="fa-solid fa-arrow-right"></i>
         </button>
 
@@ -263,63 +264,6 @@
   </div>
 </section>
   <!-- Trending Product End -->
-  <!-- Book Of The Month End -->
-{% if promoProducts is not empty %}
-
-<section class="books-layout1 space" data-bg-src="assets/img/bg/hero-bg2.jpg">
-    <div class="container">
-
-        <div class="title-area2 home-section-title animation-style1 title-anime">
-            <span class="border-line d-xxl-block d-none"></span>
-
-            <h2 class="sec-title title-anime__title">
-                Promotions du moment chez Deen Shop
-            </h2>
-
-            <a class="vs-btn" href="{{ path('app_shop', { section: 'promotions' }) }}">
-                Voir plus
-            </a>
-        </div>
-
-        <div class="row vs-carousel book-carousel g-4"
-             data-slide-show="6"
-             data-xl-slide-show="5"
-             data-ml-slide-show="4"
-             data-lg-slide-show="4"
-             data-md-slide-show="3"
-             data-sm-slide-show="2"
-             data-autoplay="true"
-             data-speed="1200"
-             data-infinite="true">
-
-            {% for product in promoProducts %}
-
-
-            {% include 'components/product_card.html.twig' with { product: product } %}
-
-
-            {% endfor %}
-
-        </div>
-
-        <div class="arraw-area mt-40">
-            <div class="d-flex justify-content-center gap-2">
-
-                <button class="icon-btn" data-slick-prev=".book-carousel">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-
-                <button class="icon-btn" data-slick-next=".book-carousel">
-                    <i class="fa-solid fa-arrow-right"></i>
-                </button>
-
-            </div>
-        </div>
-
-    </div>
-</section>
-
-{% endif %}
 <div class="feature-layout1 space-top">
   <div class="container">
     <div class="row g-4">
@@ -341,7 +285,7 @@
         </div>
       </div>
 
-      <!-- Paiement sécurisé -->
+      <!-- Paiement securise -->
       <div class="col-lg-4 col-md-6 text-center wow animate__fadeInUp" data-wow-delay="0.45s">
         <div class="feature-style1">
 
@@ -351,8 +295,8 @@
           </span>
 
           <div class="feature-body">
-            <h2 class="feature-title"><a href="#">Paiement sécurisé</a></h2>
-            <p class="feature-text">Vos transactions sont protégées et fiables</p>
+            <h2 class="feature-title"><a href="#">Paiement securise</a></h2>
+            <p class="feature-text">Vos transactions sont protegees et fiables</p>
           </div>
 
         </div>
@@ -369,7 +313,7 @@
 
           <div class="feature-body">
             <h2 class="feature-title"><a href="#">Support 24h/24 - 7j/7</a></h2>
-            <p class="feature-text">Nous sommes disponibles pour vous aider à tout moment</p>
+            <p class="feature-text">Nous sommes disponibles pour vous aider a tout moment</p>
           </div>
 
         </div>
@@ -387,21 +331,21 @@
     <!-- Titre de la section -->
     <div class="title-area2 home-section-title justify-content-center animation-style1 title-anime text-center mb-5">
       <h2 class="sec-title title-anime__title">Avis de nos clients</h2>
-      <p class="text-muted">Ce que nos clients du Sénégal disent de nous</p>
+      <p class="text-muted">Ce que nos clients du Senegal disent de nous</p>
     </div>
 
-    <!-- Carousel des témoignages -->
-    <div class="row vs-carousel g-4 align-items-center"
+    <!-- Carousel des temoignages -->
+    <div class="row vs-carousel book-carousel g-4 align-items-center"
          data-autoplay="true"
          data-slide-show="3"
          data-ml-slide-show="2"
          data-lg-slide-show="2">
 
-      <!-- Témoignage 1 -->
+      <!-- Temoignage 1 -->
       <div class="col-xl-4">
         <div class="vs-testi__style1 card h-100 border-0 shadow-sm p-4 position-relative">
           <div class="vs-testi__top d-flex align-items-center mb-3">
-            <div class="vs-testi__image me-3 fs-1" style="color: #D97C8A;">
+            <div class="vs-testi__image me-3 fs-1" style="color: #FACC15;">
               <i class="fa-solid fa-circle-user"></i>
             </div>
             <div class="vs-testi__author">
@@ -413,22 +357,22 @@
                 <i class="fa-solid fa-star"></i>
               </div>
               <h3 class="vs-testi__title h5 mb-0">Moussa Diop</h3>
-              <span class="vs-testi__desi text-muted small">Client fidèle, Dakar</span>
+              <span class="vs-testi__desi text-muted small">Client fidele, Dakar</span>
             </div>
           </div>
           <div class="vs-testi__content position-relative">
             <p class="vs-testi__text position-relative m-0" style="z-index: 1;">
-              “J’ai commandé plusieurs livres islamiques, la qualité est excellente et la livraison très rapide à Dakar.”
+              "J ai commande des sneakers et des ecouteurs, la qualite est excellente et la livraison tres rapide a Dakar."
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Témoignage 2 -->
+      <!-- Temoignage 2 -->
       <div class="col-xl-4">
         <div class="vs-testi__style1 card h-100 border-0 shadow-sm p-4 position-relative">
           <div class="vs-testi__top d-flex align-items-center mb-3">
-            <div class="vs-testi__image me-3 fs-1" style="color: #D97C8A;">
+            <div class="vs-testi__image me-3 fs-1" style="color: #FACC15;">
               <i class="fa-solid fa-circle-user"></i>
             </div>
             <div class="vs-testi__author">
@@ -440,22 +384,22 @@
                 <i class="fa-regular fa-star"></i>
               </div>
               <h3 class="vs-testi__title h5 mb-0">Aminata Ba</h3>
-              <span class="vs-testi__desi text-muted small">Cliente, Thiès</span>
+              <span class="vs-testi__desi text-muted small">Cliente, Thies</span>
             </div>
           </div>
           <div class="vs-testi__content position-relative">
             <p class="vs-testi__text position-relative m-0" style="z-index: 1;">
-              “Très bon service client. J’ai acheté un tapis de prière, il est encore plus beau que sur les photos.”
+              "Tres bon service client. J ai achete une montre connectee, elle est encore plus belle que sur les photos."
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Témoignage 3 -->
+      <!-- Temoignage 3 -->
       <div class="col-xl-4">
         <div class="vs-testi__style1 card h-100 border-0 shadow-sm p-4 position-relative">
           <div class="vs-testi__top d-flex align-items-center mb-3">
-            <div class="vs-testi__image me-3 fs-1" style="color: #D97C8A;">
+            <div class="vs-testi__image me-3 fs-1" style="color: #FACC15;">
               <i class="fa-solid fa-circle-user"></i>
             </div>
             <div class="vs-testi__author">
@@ -472,17 +416,17 @@
           </div>
           <div class="vs-testi__content position-relative">
             <p class="vs-testi__text position-relative m-0" style="z-index: 1;">
-              “Les prix sont abordables et les produits sont authentiques. Je recommande fortement cette boutique.”
+              "Les prix sont abordables et les produits sont authentiques. Je recommande fortement cette boutique."
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Témoignage 4 -->
+      <!-- Temoignage 4 -->
       <div class="col-xl-4">
         <div class="vs-testi__style1 card h-100 border-0 shadow-sm p-4 position-relative">
           <div class="vs-testi__top d-flex align-items-center mb-3">
-            <div class="vs-testi__image me-3 fs-1" style="color: #D97C8A;">
+            <div class="vs-testi__image me-3 fs-1" style="color: #FACC15;">
               <i class="fa-solid fa-circle-user"></i>
             </div>
             <div class="vs-testi__author">
@@ -499,7 +443,7 @@
           </div>
           <div class="vs-testi__content position-relative">
             <p class="vs-testi__text position-relative m-0" style="z-index: 1;">
-              “J’aime beaucoup la variété des produits, surtout les parfums et les livres religieux.”
+              "J aime beaucoup la variete des produits, surtout les parfums, la tech et les accessoires de fitness."
             </p>
           </div>
         </div>
@@ -522,11 +466,11 @@
                 <div class="contact-info-card bg-white p-4 shadow-lg rounded-4 position-absolute d-none d-md-block"
      style="top: -50px; z-index: 10; border-bottom: 5px solid var(--theme-color); max-width: 360px;">
 
-    <h4 class="fw-bold mb-3" style="color: #333;">Deen Shop</h4>
+    <h4 class="fw-bold mb-3" style="color: #333;">SenBazar</h4>
 
     <div class="d-flex mb-3">
         <i class="fas fa-map-marker-alt mt-1 me-3" style="color: var(--theme-color);;"></i>
-        <p class="mb-0" style="color: #0a0a0a; font-weight: 500;">Scat Urbam, Dakar, Sénégal</p>
+        <p class="mb-0" style="color: #0a0a0a; font-weight: 500;">Dakar</p>
     </div>
 
     <div class="d-flex mb-3">
@@ -538,13 +482,13 @@
         <i class="fas fa-clock mt-1 me-3" style="color: var(--theme-color);;"></i>
         <div>
             <p class="mb-0 small fw-bold" style="color: #0a0a0a;">Lun - Sam : 10:00 - 20:00</p>
-            <p class="mb-0 small" style="color: #444;">Dimanche : Fermé</p>
+            <p class="mb-0 small" style="color: #444;">Dimanche : Ferme</p>
         </div>
     </div>
 
-    <a href="https://www.google.com/maps/search/?api=1&query=Deen+Shop+Scat+Urbam" target="_blank"
+    <a href="https://www.google.com/maps/search/?api=1&query=Dakar" target="_blank"
        class="btn w-100 text-white mt-2" style="background-color: var(--theme-color);; border-radius: 8px; font-weight: 600;">
-        <i class="fas fa-route me-2"></i>Obtenir l'itinéraire
+        <i class="fas fa-route me-2"></i>Obtenir l'itineraire
     </a>
   </div>
                 </div>
@@ -555,12 +499,12 @@
 
 <div class="container d-md-none py-4">
     <div class="bg-light p-4 rounded-4 text-center border">
-        <h4 class="fw-bold mb-2">Deen Shop</h4>
-        <p class="mb-1">Scat Urbam, Dakar, Senegal</p>
+        <h4 class="fw-bold mb-2">SenBazar</h4>
+        <p class="mb-1">Dakar</p>
         <p class="fw-bold" style="color: var(--theme-color);">+221 77 818 12 59</p>
         <p class="mb-1 small fw-bold">Lun - Sam : 10:00 - 20:00</p>
         <p class="mb-3 small text-muted">Dimanche : Ferme</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Deen+Shop+Scat+Urbam" target="_blank"
+        <a href="https://www.google.com/maps/search/?api=1&query=Dakar" target="_blank"
            class="btn w-100 text-white" style="background-color: var(--theme-color); border-radius: 8px; font-weight: 600;">
             <i class="fas fa-route me-2"></i>Obtenir l'itineraire
         </a>

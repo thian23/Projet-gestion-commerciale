@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+﻿{% extends 'base.html.twig' %}
 
-{% block title %}Dashboard | DeenAdmin{% endblock %}
+{% block title %}Dashboard | SenBazar Admin{% endblock %}
 
 {% block body %}
 <div class="container-fluid py-4">
@@ -9,7 +9,7 @@
     <div class="row align-items-center g-3 mb-4">
         <div class="col-10 col-sm-auto">
             <h2 class="fw-bold m-0 text-dark" style="letter-spacing: -0.5px;">Tableau de bord</h2>
-            <p class="text-muted small mb-0">Gestion des activités et des commandes</p>
+            <p class="text-muted small mb-0">Gestion des activites et des commandes</p>
         </div>
         <div class="col-2 col-sm text-end">
             <span class="badge bg-white text-dark shadow-sm py-2 px-3 rounded-pill border">
@@ -72,7 +72,7 @@
             <div class="row g-3 align-items-end">
                 <div class="col-10 col-sm-6 col-md-3">
                     <label class="form-label small fw-bold text-secondary mb-1"><i class="fa-solid fa-magnifying-glass me-1 opacity-50"></i>Rechercher</label>
-                    <input type="text" id="searchInput" class="form-control border-0 bg-light rounded-pill px-3" placeholder="ID, Client, téléphone..." style="height: 40px; font-size: 14px;">
+                    <input type="text" id="searchInput" class="form-control border-0 bg-light rounded-pill px-3" placeholder="ID, Client, telephone..." style="height: 40px; font-size: 14px;">
                 </div>
 
                 <div class="col-10 col-sm-6 col-md-2">
@@ -80,9 +80,9 @@
                     <select id="statusFilter" class="form-select border-0 bg-light rounded-pill px-3" style="height: 40px; font-size: 14px;">
                         <option value="">Tous les statuts</option>
                         <option value="en_attente">En attente</option>
-                        <option value="payer">Payée</option>
-                        <option value="expedier">Expédiée</option>
-                        <option value="annuler">Annulée</option>
+                        <option value="payee">Payee</option>
+                        <option value="expediee">Expediee</option>
+                        <option value="annulee">Annulee</option>
                     </select>
                 </div>
 
@@ -90,7 +90,7 @@
                     <label class="form-label small fw-bold text-secondary mb-1"><i class="fa-solid fa-credit-card me-1 opacity-50"></i>Paiement</label>
                     <select id="paymentFilter" class="form-select border-0 bg-light rounded-pill px-3" style="height: 40px; font-size: 14px;">
                         <option value="">Tous les modes</option>
-                        <option value="cash_on_delivery">À la livraison</option>
+                        <option value="cash_on_delivery">A la livraison</option>
                         <option value="wave">Wave</option>
                         <option value="orange_money">Orange Money</option>
                         <option value="card">Carte bancaire</option>
@@ -161,9 +161,9 @@
                                 <td data-label="Statut">
                                     {% set b_class = 'badge-secondary' %}
                                     {% if order.status.value == 'en_attente' %}{% set b_class = 'badge-warning' %}
-                                    {% elseif order.status.value == 'payer' %}{% set b_class = 'badge-success' %}
-                                    {% elseif order.status.value == 'expedier' %}{% set b_class = 'badge-info' %}
-                                    {% elseif order.status.value == 'annuler' %}{% set b_class = 'badge-danger' %}
+                                    {% elseif order.status.value == 'payee' %}{% set b_class = 'badge-success' %}
+                                    {% elseif order.status.value == 'expediee' %}{% set b_class = 'badge-info' %}
+                                    {% elseif order.status.value == 'annulee' %}{% set b_class = 'badge-danger' %}
                                     {% endif %}
                                     <span class="badge-status {{ b_class }}">
                                         {{ order.status.value|replace({'_': ' '})|upper }}
@@ -174,9 +174,9 @@
                                         <input type="hidden" name="_method" value="PATCH">
                                         <select name="status" class="form-select form-select-sm border border-light-subtle bg-light rounded-pill px-3 shadow-none text-dark" style="font-size: 12px; width: 120px; height: 32px;">
                                             <option value="en_attente" {{ order.status.value == 'en_attente' ? 'selected' : '' }}>Attente</option>
-                                            <option value="payer" {{ order.status.value == 'payer' ? 'selected' : '' }}>Payée</option>
-                                            <option value="expedier" {{ order.status.value == 'expedier' ? 'selected' : '' }}>Expédiée</option>
-                                            <option value="annuler" {{ order.status.value == 'annuler' ? 'selected' : '' }}>Annulée</option>
+                                            <option value="payee" {{ order.status.value == 'payee' ? 'selected' : '' }}>Payee</option>
+                                            <option value="expediee" {{ order.status.value == 'expediee' ? 'selected' : '' }}>Expediee</option>
+                                            <option value="annulee" {{ order.status.value == 'annulee' ? 'selected' : '' }}>Annulee</option>
                                         </select>
                                         <button type="submit" class="btn btn-sm btn-dark rounded-circle p-0 d-flex align-items-center justify-content-center btn-update-status" style="width: 32px; height: 32px;">
                                             <i class="fa-solid fa-rotate fs-6 text-white"></i>
@@ -199,7 +199,7 @@
             <!-- Empty Container pour JS -->
             <div id="noResultsMessage" class="text-center py-5 text-muted d-none">
                 <i class="fa-solid fa-magnifying-glass fs-2 mb-3 opacity-20"></i>
-                <p class="mb-0 fw-medium">Aucun résultat ne correspond à vos filtres de recherche.</p>
+                <p class="mb-0 fw-medium">Aucun resultat ne correspond a vos filtres de recherche.</p>
             </div>
         </div>
 
@@ -329,7 +329,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <style>
     /* VARIABLES COMPATIBILITY */
     :root {
-        --admin-primary: #EFB7C1;
+        --admin-primary: #10B981;
         --admin-success: #2E4A5B;
         --admin-dark: #0f172a;
     }
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .btn-update-status:hover { transform: rotate(45deg); background-color: var(--admin-primary) !important;}
     
     /* GRADIENT BADGES & CARDS */
-    .bg-gradient-primary { background: linear-gradient(135deg, #EFB7C1 0%, #D97C8A 100%); }
+    .bg-gradient-primary { background: linear-gradient(135deg, #10B981 0%, #F59E0B 100%); }
     .bg-gradient-success { background: linear-gradient(135deg, #2E4A5B 0%, #2E4A5B 100%); }
     .bg-gradient-dark { background: linear-gradient(135deg, #585959 0%, #19191b 100%); }
     .bg-white-10 { background: rgba(255, 255, 255, 0.15); }
@@ -395,3 +395,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 </style>
 {% endblock %}
+
+

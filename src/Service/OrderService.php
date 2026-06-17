@@ -4,10 +4,12 @@ namespace App\Service;
 
 use App\Entity\OrderItem;
 use App\Entity\Orders;
+use App\Entity\Paiement;
 use App\Entity\Product;
 use App\Entity\User;
 use App\Enum\OrderStatus;
 use App\Enum\PaymentMethod;
+use App\Enum\PaymentStatus;
 use App\Repository\CartRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -97,7 +99,15 @@ class OrderService
 
             $order->setTotal($subtotal + self::SHIPPING_COST);
 
+            $paiement = new Paiement();
+            $paiement->setCommande($order);
+            $paiement->setMontant($order->getTotal());
+            $paiement->setMoyenPaiement($payment);
+            $paiement->setStatut(PaymentStatus::EnAttente);
+            $order->setPaiement($paiement);
+
             $this->em->persist($order);
+            $this->em->persist($paiement);
             $this->em->flush();
 
             return $order;
@@ -106,7 +116,7 @@ class OrderService
 
     public function cancelOrder(Orders $order): void
     {
-        if ($order->getStatus() === OrderStatus::Annuler) {
+        if ($order->getStatus() === OrderStatus::Annulee) {
             throw new \InvalidArgumentException('Commande deja annulee.');
         }
 
@@ -118,7 +128,7 @@ class OrderService
             }
         }
 
-        $order->setStatus(OrderStatus::Annuler);
+        $order->setStatus(OrderStatus::Annulee);
 
         $this->em->flush();
     }

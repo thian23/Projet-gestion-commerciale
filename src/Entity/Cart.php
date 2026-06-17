@@ -22,6 +22,14 @@ private ?Product $product = null;
 #[ORM\Column]
 private int $quantity = 1;
 
+#[ORM\Column]
+private \DateTimeImmutable $dateAjout;
+
+public function __construct()
+{
+    $this->dateAjout = new \DateTimeImmutable();
+}
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,4 +42,6 @@ public function setProduct(?Product $product): static { $this->product = $produc
 
 public function getQuantity(): int { return $this->quantity; }
 public function setQuantity(int $q): static { $this->quantity = $q; return $this; }
+public function getDateAjout(): \DateTimeImmutable { return $this->dateAjout; }
+public function setDateAjout(\DateTimeImmutable $dateAjout): static { $this->dateAjout = $dateAjout; return $this; }
 }

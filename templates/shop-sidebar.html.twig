@@ -1,4 +1,4 @@
-{{ include('navbar.html.twig') }}
+﻿{{ include('navbar.html.twig') }}
 
 <body class="shop-page">
 
@@ -55,7 +55,7 @@
                                     <input type="hidden" name="section" value="{{ currentSection }}">
                                     <input type="hidden" name="category_name" value="{{ currentCategoryName }}">
 
-                                    <button class="btn" style="color: #EFB7C1;" type="submit">
+                                    <button class="btn" style="color: #10B981;" type="submit">
                                         <i class="fa fa-search"></i>
                                     </button>
 
@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <!-- 📌 FILTRES (ACCORDÉON MOBILE) -->
+                    <!-- 📌 FILTRES (ACCORDEON MOBILE) -->
                     <div class="card border-0 shadow-sm mb-3">
                         <div class="card-body">
 
@@ -82,35 +82,35 @@
 
                                     <li class="list-group-item border-0 px-0">
                                         <a href="{{ path('app_shop', { q: currentSearch }) }}"
-                                           class="text-decoration-none d-block {{ currentSection is empty ? 'fw-bold ' : 'text-dark' }}" style="color: #EFB7C1;">
+                                           class="text-decoration-none d-block {{ currentSection is empty ? 'fw-bold active-filter' : 'text-dark' }}" style="color: #10B981;">
                                             Tous les produits
                                         </a>
                                     </li>
 
                                     <li class="list-group-item border-0 px-0">
                                         <a href="{{ path('app_shop', { section: 'phares', q: currentSearch }) }}"
-                                           class="text-decoration-none d-block {{ currentSection == 'phares' ? 'fw-bold ' : 'text-dark' }}" style="color: #EFB7C1;">
+                                           class="text-decoration-none d-block {{ currentSection == 'phares' ? 'fw-bold active-filter' : 'text-dark' }}" style="color: #10B981;">
                                             Produits phares
                                         </a>
                                     </li>
 
                                     <li class="list-group-item border-0 px-0">
                                         <a href="{{ path('app_shop', { section: 'promotions', q: currentSearch }) }}"
-                                           class="text-decoration-none d-block {{ currentSection == 'promotions' ? 'fw-bold ' : 'text-dark' }}" style="color: #EFB7C1;">
+                                           class="text-decoration-none d-block {{ currentSection == 'promotions' ? 'fw-bold active-filter' : 'text-dark' }}" style="color: #10B981;">
                                             Promotions
                                         </a>
                                     </li>
 
                                     <li class="list-group-item border-0 px-0">
                                         <a href="{{ path('app_shop', { section: 'nouveautes', q: currentSearch }) }}"
-                                           class="text-decoration-none d-block {{ currentSection == 'nouveautes' ? 'fw-bold ' : 'text-dark' }}" style="color: #EFB7C1;">
-                                            Nouveautés
+                                           class="text-decoration-none d-block {{ currentSection == 'nouveautes' ? 'fw-bold active-filter' : 'text-dark' }}" style="color: #10B981;">
+                                            Nouveautes
                                         </a>
                                     </li>
 
                                     <li class="list-group-item border-0 px-0">
                                         <a href="{{ path('app_shop', { section: 'best_sellers', q: currentSearch }) }}"
-                                           class="text-decoration-none d-block {{ currentSection == 'best_sellers' ? 'fw-bold ' : 'text-dark' }}" style="color: #EFB7C1;">
+                                           class="text-decoration-none d-block {{ currentSection == 'best_sellers' ? 'fw-bold active-filter' : 'text-dark' }}" style="color: #10B981;">
                                             Best sellers
                                         </a>
                                     </li>
@@ -140,7 +140,7 @@
                                     {% for cat in categories %}
                                         <li class="list-group-item border-0 px-0">
                                             <a href="{{ path('app_shop', { cat: cat.id, q: currentSearch }) }}"
-                                               class="text-decoration-none d-block {{ currentCategory == cat.id ? 'fw-bold ' : 'text-dark' }}" style="color: #EFB7C1;">
+                                               class="text-decoration-none d-block {{ currentCategory == cat.id ? 'fw-bold active-filter' : 'text-dark' }}" style="color: #10B981;">
                                                 {{ cat.nom }}
                                             </a>
                                         </li>
@@ -181,7 +181,7 @@
                 <!-- EMPTY -->
                 <div id="emptyShopResults" class="text-center py-5 d-none">
                     <i class="fa fa-search fa-2x mb-3"></i>
-                    <h6>Aucun produit trouvé</h6>
+                    <h6>Aucun produit trouve</h6>
                     <p class="text-muted">Essayez un autre filtre</p>
                 </div>
 
@@ -277,10 +277,10 @@
             pagination.innerHTML = "";
             const totalPages = Math.ceil(items.length / perPage);
 
-            // Bouton Précédent
+            // Bouton Precedent
             pagination.appendChild(createPageLink("«", currentPage - 1, false, currentPage === 1));
 
-            // Pages numérotées
+            // Pages numerotees
             for (let i = 1; i <= totalPages; i++) {
                 pagination.appendChild(createPageLink(i, i, i === currentPage));
             }
@@ -380,3 +380,7 @@
 </body>
 
 </html>
+
+
+
+

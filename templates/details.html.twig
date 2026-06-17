@@ -3,14 +3,14 @@
 
 <body>
   <!--[if lte IE 9]>
-    	<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
   <!--********************************
-   		Code Start From Here 
-	******************************** -->
+       Code Start From Here
+  ******************************** -->
   <!--==============================
-	Preloader
-	==============================-->
+  Preloader
+  ==============================-->
 
   <!--==============================
     Breadcrumb
@@ -19,7 +19,7 @@
     <div class="container z-index-common">
       <div class="breadcumb-content">
         <h1 class="breadcumb-title">
-            Détails du Produit
+            Details du Produit
             <span class="d-block mt-2 fs-4 text-muted">{{ product.titre }}</span>
         </h1>      </div>
             </div>
@@ -35,12 +35,12 @@
         <div class="col-lg-6">
           <div class="product-slide-row wow animate__fadeInUp">
             <div class="product-big-img card border-0 shadow-sm rounded-4 overflow-hidden p-3 bg-white text-center position-relative">
-                           
+
 
               <div class="img-container d-flex align-items-center justify-content-center" style="min-height: 400px; max-height: 500px;">
-                <img src="{{ asset('uploads/products/' ~ product.image) }}" 
-                     alt="{{ product.titre }}" 
-                     class="img-fluid rounded-3 style-main-img" 
+                <img src="{{ asset('uploads/products/' ~ product.image) }}"
+                     alt="{{ product.titre }}"
+                     class="img-fluid rounded-3 style-main-img"
                      style="object-fit: contain; max-height: 450px;">
               </div>
             </div>
@@ -50,9 +50,9 @@
         {# 2. INFOS DU PRODUIT #}
         <div class="col-lg-6">
           <div class="product-about wow animate__fadeInUp ps-lg-3">
-            
+
             <span class="text-uppercase text-muted small fw-bold tracking-wider mb-2 d-block">
-              {{ product.category.nom ?? 'Non définie' }}
+              {{ product.category.nom ?? 'Non definie' }}
             </span>
             <h2 class="product-title fw-bold text-dark mb-3 fs-1">{{ product.titre }}</h2>
 
@@ -70,7 +70,7 @@
 
             <!-- Description Courte -->
             <div class="mb-4">
-              <h6 class="fw-bold text-dark mb-2">Aperçu du produit :</h6>
+              <h6 class="fw-bold text-dark mb-2">Apercu du produit :</h6>
               <p class="text-muted lh-base mb-0">
                 {{ product.description|slice(0, 180) ~ (product.description|length > 180 ? '...' : '') }}
               </p>
@@ -92,10 +92,10 @@
                            data-lot-name="{{ lot.nom }}"
                            data-lot-price="{{ lot.prix }}"
                            data-lot-qty="{{ lot.quantite }}">
-                        
+
                         <div class="fw-bold text-dark mb-1">{{ lot.nom }}</div>
                         <div class="text-muted small mb-2">
-                          <i class="fa-solid fa-boxes-stacked me-1"></i> {{ lot.quantite }} unités
+                          <i class="fa-solid fa-boxes-stacked me-1"></i> {{ lot.quantite }} unites
                         </div>
                         <div class="fw-bold" style="color: var(--theme-color);">
                           {{ lot.prix|number_format(0, ',', ' ') }} FCFA
@@ -110,9 +110,9 @@
             {# SECTION BOUTONS D'ACTION #}
             <input type="hidden" id="selectedLotData">
             <div class="d-flex flex-wrap align-items-center gap-3 pt-3 border-top mt-4">
-              
+
               <!-- COMMANDER DIRECTEMENT -->
-              <a href="#" class="btn btn-lg text-white js-commande fw-bold px-4 py-3 shadow-sm transition-all deen-btn-order flex-grow-1" id="shop" 
+              <a href="#" class="btn btn-lg text-white js-commande fw-bold px-4 py-3 shadow-sm transition-all deen-btn-order flex-grow-1" id="shop"
                  data-id="{{ product.id }}"
                  data-title="{{ product.titre }}"
                  data-price="{{ product.prix }}"
@@ -152,7 +152,7 @@
             <!-- META INFOS (SKU) -->
             <div class="product_meta pt-4 mt-4 border-top text-muted small">
               <div class="mb-1"><strong>SKU :</strong> <span class="text-dark">Ds-scturbm-{{ product.id }}.sn</span></div>
-              <div><strong>Disponibilité globale :</strong> <span class="text-dark">{{ product.stock }} pièces restantes</span></div>
+              <div><strong>Disponibilite globale :</strong> <span class="text-dark">{{ product.stock }} pieces restantes</span></div>
             </div>
 
           </div>
@@ -160,9 +160,9 @@
 
       </div>
 
-      {# 3. DESCRIPTION COMPLÈTE #}
+      {# 3. DESCRIPTION COMPLETE #}
       <div class="product-description wow animate__fadeInUp mt-5 pt-4 border-top">
-        <h3 class="fw-bold text-dark mb-3">Description détaillée</h3>
+        <h3 class="fw-bold text-dark mb-3">Description detaillee</h3>
         <p class="text-dark lh-lg bg-light p-4 rounded-4" style="text-align: justify;">
           {{ product.description }}
         </p>
@@ -172,12 +172,15 @@
       {% if similarProducts is not empty %}
         <div class="mt-5 pt-4 mb-5">
           <h3 class="mb-4 fw-bold text-dark">Produits similaires</h3>
-          <div class="row vs-carousel g-4 book-carousel"
-               data-slide-show="5"
-               data-md-slide-show="3"
-               data-sm-slide-show="2"
+          <div class="row vs-carousel g-4 book-carousel similar-products-carousel"
+               data-slide-show="4"
+               data-xl-slide-show="4"
+               data-ml-slide-show="3"
+               data-lg-slide-show="3"
+               data-md-slide-show="2"
+               data-sm-slide-show="1"
                data-autoplay="true">
-            
+
             {% for item in similarProducts %}
               {% include 'components/product_card.html.twig' with { product: item } %}
             {% endfor %}
@@ -191,24 +194,24 @@
   {{ include('footer.html.twig') }}
 
   <!--==============================
-    Styles Spécifiques à la Page Détail
+    Styles Specifiques a la Page Detail
   ============================== -->
   <style>
-    /* Cartes de Sélection des Lots */
+    /* Cartes de Selection des Lots */
     .lot-select-card {
         border-color: #dee2e6 !important;
         background-color: #fafafa;
         position: relative;
     }
     .lot-select-card:hover {
-        border-color: #EFB7C1 !important;
+        border-color: #10B981 !important;
         background-color: #fff;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
     .lot-select-card.active {
         border-color: var(--theme-color) !important;
-        background-color: rgba(181, 124, 124, 0.04) !important;
+        background-color: rgba(245, 158, 11, 0.08) !important;
         font-weight: 500;
     }
     .lot-select-card.active::after {
@@ -234,9 +237,9 @@
         border-radius: 12px !important;
     }
     .deen-btn-order:hover {
-        background-color: #9e6464 !important;
+        background-color: #F59E0B !important;
         transform: translateY(-2px);
-        box-shadow: 0 5px 15px rgba(181, 124, 124, 0.3) !important;
+        box-shadow: 0 5px 15px rgba(245, 158, 11, 0.28) !important;
     }
     .deen-btn-cart, .deen-btn-wish {
         border-radius: 12px !important;
@@ -279,8 +282,8 @@
   <script src="{{ asset('assets/js/wow.min.js') }}"></script>
   <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
   <script src="{{ asset('assets/js/nouislider.min.js') }}"></script>
-  
-  <!-- Fichiers logiques principaux de l'app (toujours à la fin) -->
+
+  <!-- Fichiers logiques principaux de l'app (toujours a la fin) -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('/assets/js/index.js') }}"></script>
 
@@ -292,17 +295,17 @@
 
         lotCards.forEach(card => {
             card.addEventListener('click', function() {
-                // Si la carte cliquée est déjà active, on la désactive (dé-sélection)
+                // Si la carte cliquee est deja active, on la desactive (de-selection)
                 if(this.classList.contains('active')) {
                     this.classList.remove('active');
                     if(selectedLotInput) selectedLotInput.value = "";
                 } else {
-                    // Supprime l'état actif des autres cartes
+                    // Supprime l'etat actif des autres cartes
                     lotCards.forEach(c => c.classList.remove('active'));
                     // Active la carte actuelle
                     this.classList.add('active');
-                    
-                    // Stockage des informations du lot sélectionné
+
+                    // Stockage des informations du lot selectionne
                     if(selectedLotInput) {
                         selectedLotInput.value = this.getAttribute('data-lot-id');
                     }

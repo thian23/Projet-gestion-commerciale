@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -6,29 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>
-    Deen Shop - Boutique Islamique au Sénégal | Coran, Livres & Accessoires
+    SenBazar - Marketplace au Senegal | Produits, boutiques & promotions
   </title>
 
-  <meta name="description" content="Deen Shop est une boutique islamique au Sénégal spécialisée dans les Corans, livres religieux, parfums et accessoires musulmans. Livraison rapide à Dakar et partout au Sénégal.">
+  <meta name="description" content="SenBazar est une marketplace senegalaise pour acheter des produits locaux, decouvrir des boutiques et profiter de promotions avec une livraison rapide.">
   
-  <meta name="keywords" content="deen shop, boutique islamique, coran sénégal, livres islamiques, boutique musulmane dakar, cadeaux islamiques">
+  <meta name="keywords" content="SenBazar, marketplace Senegal, boutique en ligne Dakar, produits locaux, promotions Senegal">
 
   <meta name="robots" content="index, follow">
 
-  <link rel="canonical" href="yAndHttpHost ~ app.request.pathInfo }}">
+  <link rel="canonical" href="{{ app.request.schemeAndHttpHost ~ app.request.pathInfo }}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Deen Shop - Boutique Islamique">
-  <meta property="og:description" content="Corans, livres islamiques, accessoires et cadeaux musulmans au Sénégal.">
+  <meta property="og:title" content="SenBazar - Marketplace au Senegal">
+  <meta property="og:description" content="Produits, boutiques et promotions au Senegal.">
   <meta property="og:image" content="{{ asset('assets/img/brand/logoN.jpeg') }}">
   <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.pathInfo }}">
   <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Deen Shop">
-  <meta name="twitter:description" content="Boutique islamique au Sénégal">
-  <meta name="twitter:image" content="{{ asset('assets/img/brand/logoN.jpeg') }}">
 
   <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   <!-- Fontawesome Icon -->
@@ -45,7 +39,7 @@
   <link rel="stylesheet" href="/assets/css/nouislider.css">
   <!-- Theme Custom CSS -->
   <link rel="stylesheet" href="/assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" href="/assets/img/brand/logoN.jpeg">
   <!-- Fonts & CSS -->
@@ -58,7 +52,7 @@
   <div class="preloader">
     <button class="vs-btn preloaderCls">Annuler le chargement</button>
     <div class="preloader-inner">
-      <img src="/assets/img/brand/logoN.jpeg" alt="Deen Shop boutique islamique Sénégal coran livres musulmans" class="deen-header-logo">
+      <img src="/assets/img/brand/logoN.jpeg" alt="SenBazar marketplace Senegal" class="deen-header-logo">
       <span class="loader"></span>
     </div>
   </div>
@@ -73,11 +67,6 @@
       <span class="progress-percentage" id="progressPercentage">0%</span>
     </span>
   </button>
-
-  <!-- WhatsApp Float -->
-  <a href="https://wa.me/221778181259" class="deen-whatsapp-float" target="_blank" rel="noopener" aria-label="Envoyer un message WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-  </a>
 
   <!-- Mobile Menu Wrapper -->
   <div class="vs-menu-wrapper">
@@ -95,7 +84,7 @@
           <li class="py-2 border-bottom"><a href="{{ path('app_home') }}" class="text-dark text-decoration-none fw-medium d-block">Accueil</a></li>
           <li class="py-2 border-bottom"><a href="{{ path('app_shop') }}" class="text-dark text-decoration-none fw-medium d-block">Boutique</a></li>
           <li class="menu-item-has-children py-2 border-bottom">
-            <a href="#" class="text-dark text-decoration-none fw-medium d-block">Catégories</a>
+            <a href="#" class="text-dark text-decoration-none fw-medium d-block">Categories</a>
             <ul class="sub-menu list-unstyled ps-3 pt-2 small bg-light rounded-3 mt-2" style="display: none;">
                {% for category in categories %}
                   <li class="py-1.5">
@@ -111,24 +100,15 @@
         <div class="deen-mobile-actions rounded-4 bg-light p-3 mt-4 border-0">
           <a href="#" class="deen-mobile-action-item text-dark text-decoration-none small d-flex align-items-center mb-3">
             <i class="fal fa-location-arrow me-2 text-secondary"></i>
-            <span>Scat-urbam</span>
+            <span>Dakar</span>
           </a>
-
-          <div class="deen-mobile-socials d-flex gap-3 mb-4">
-            <a href="https://www.tiktok.com/@sen_deen_shop" class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center text-dark text-decoration-none" style="width: 38px; height: 38px;" aria-label="TikTok">
-              <i class="fa-brands fa-tiktok"></i>
-            </a>
-            <a href="https://www.instagram.com/sen_deen_shop/" class="rounded-circle bg-white shadow-sm d-flex align-items-center justify-content-center text-dark text-decoration-none" style="width: 38px; height: 38px;" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </div>
 
           {% if app.user %}
             <a href="{{ path('profile') }}" class="btn btn-white w-100 shadow-sm border rounded-3 mb-2 small text-start py-2">
               <i class="fa-solid fa-user me-2 text-muted"></i> Mon profil
             </a>
             <a href="{{ path('logout') }}" class="btn btn-danger-soft text-danger w-100 rounded-3 small text-start py-2">
-              <i class="fa-solid fa-right-from-bracket me-2"></i> Déconnexion
+              <i class="fa-solid fa-right-from-bracket me-2"></i> Deconnexion
             </a>
           {% else %}
             <a href="#" class="btn btn-dark w-100 rounded-3 py-2 small" data-bs-toggle="modal" data-bs-target="#authModal">
@@ -140,7 +120,7 @@
     </div>
   </div>
 
-  <!-- Popup Search Box Desktop (Si activée par clic ailleurs) -->
+  <!-- Popup Search Box Desktop (Si activee par clic ailleurs) -->
   <div class="popup-search-box d-none d-lg-block">
     <button class="searchClose"><i class="fal fa-times"></i></button>
     <form action="{{ path('app_shop') }}" method="GET">
@@ -160,19 +140,12 @@
             <div class="deen-topbar-info text-white small opacity-90 d-flex align-items-center gap-3">
               <span><i class="fa-solid fa-truck-fast me-1.5"></i> Livraison la plus rapide dans votre ville</span>
               <span class="opacity-50">|</span>
-              <a href="mailto:DeenShop@gmail.com" class="text-white text-decoration-none"><i class="fas fa-envelope me-1.5"></i> DeenShop@gmail.com</a>
+              <a href="mailto:contact@senbazar.sn" class="text-white text-decoration-none"><i class="fas fa-envelope me-1.5"></i> contact@senbazar.sn</a>
             </div>
           </div>
           <div class="col-auto">
             <div class="deen-topbar-actions d-flex align-items-center text-white small gap-3">
-              <a class="text-white text-decoration-none opacity-90"><i class="fal fa-location-arrow me-1"></i> Scat-urbam</a>
-              <div class="opacity-25" style="width: 1px; height: 12px; background: #fff;"></div>
-              <div class="d-flex gap-2">
-                <a href="https://www.tiktok.com/@sen_deen_shop" class="text-white opacity-75 hover-opacity-100 transition-all"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="https://www.instagram.com/sen_deen_shop/" class="text-white opacity-75 hover-opacity-100 transition-all"><i class="fab fa-instagram"></i></a>
-              </div>
-              <div class="opacity-25" style="width: 1px; height: 12px; background: #fff;"></div>
-
+              <a class="text-white text-decoration-none opacity-90"><i class="fal fa-location-arrow me-1"></i> Dakar</a>
               {% if app.user %}
                 <div class="user-dropdown">
                   <a href="#" class="user-toggle text-white">
@@ -183,7 +156,7 @@
 
                   <ul class="user-menu">
                     <li><a href="{{ path('profile') }}">Mon profil</a></li>
-                    <li><a href="{{ path('logout') }}" class="text-danger">Déconnexion</a></li>
+                    <li><a href="{{ path('logout') }}" class="text-danger">Deconnexion</a></li>
                   </ul>
                 </div>
               {% else %}
@@ -205,16 +178,16 @@
           <!-- LOGO -->
           <div class="col-auto">
             <a href="{{ path('app_home') }}" class="d-block transition-all hover-scale">
-              <img src="/assets/img/brand/logoN.jpeg" alt="Logo Deen Shop" class="deen-header-logo img-fluid rounded-2" style="max-height: 75px; width: auto; height: auto;">
+              <img src="/assets/img/brand/logoN.jpeg" alt="Logo SenBazar" class="deen-header-logo img-fluid rounded-2" style="max-height: 75px; width: auto; height: auto;">
             </a>
           </div>
 
-          <!-- BARRE DE RECHERCHE CORRIGÉE (Desktop) -->
+          <!-- BARRE DE RECHERCHE CORRIGEE (Desktop) -->
           <div class="col d-none d-lg-block px-5">
             <form action="{{ path('app_shop') }}" method="GET">
               <div class="input-group border rounded-pill bg-light border-light-subtle custom-search-group">
                 
-                <!-- Conteneur Dropdown Dédié -->
+                <!-- Conteneur Dropdown Dedie -->
 <div class="dropdown position-relative">
     <button
         type="button"
@@ -222,7 +195,7 @@
         class="btn btn-white border-0 px-3 small text-dark fw-medium h-100 d-flex align-items-center"
         style="background:#fff; border-radius:50px 0 0 50px; border-right:1px solid #eee !important;"
     >
-        Catégories
+        Categories
         <i class="fal fa-chevron-down ms-2"></i>
     </button>
 
@@ -244,16 +217,16 @@
         {% else %}
             <li>
                 <span class="dropdown-item-text text-muted small px-3 py-2 d-block">
-                    Aucune catégorie disponible
+                    Aucune categorie disponible
                 </span>
             </li>
         {% endif %}
     </ul>
 </div>
 
-                <input type="text" name="q" value="{{ currentSearch ?? '' }}" class="form-control border-0 shadow-none bg-transparent ps-3 small text-dark" placeholder="Rechercher un produits, coran, livres...">
+                <input type="text" name="q" value="{{ currentSearch ?? '' }}" class="form-control border-0 shadow-none bg-transparent ps-3 small text-dark" placeholder="Rechercher un produit, une boutique, une categorie...">
 
-                <button class="btn border-0 px-4 transition-all d-flex align-items-center justify-content-center" style="background-color: #EFB7C1; color: white; border-radius: 0 50px 50px 0;" type="submit">
+                <button class="btn border-0 px-4 transition-all d-flex align-items-center justify-content-center" style="background-color: #F59E0B; color: white; border-radius: 0 50px 50px 0;" type="submit">
                   <i class="fa-solid fa-magnifying-glass fs-6"></i>
                 </button>
               </div>
@@ -271,15 +244,15 @@
               </a>
 
               <!-- Cart (Panier) -->
-              <a href="{{ path('app_cart_index') }}" class="deen-action-btn btn rounded-circle position-relative d-flex align-items-center justify-content-center border-0 p-0 shadow-sm text-white" style="width: 44px; height: 44px; background-color: #EFB7C1;">
+              <a href="{{ path('app_cart_index') }}" class="deen-action-btn btn rounded-circle position-relative d-flex align-items-center justify-content-center border-0 p-0 shadow-sm text-white" style="width: 44px; height: 44px; background-color: #F59E0B;">
                 <i class="fa-solid fa-basket-shopping fs-5"></i>
                 <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark py-1 px-1.5" style="font-size: 10px;">0</span>
               </a>
 
-              <!-- Numéro d'assistance (Desktop) -->
+              <!-- Numero d'assistance (Desktop) -->
               <div class="d-none d-md-flex align-items-center gap-2.5 ps-3 border-start border-light-subtle">
-                <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background-color: rgba(239, 183, 193, 0.1); color: #EFB7C1 !important;">
-                  <i class="fas fa-phone-alt" style="color: #EFB7C1;"></i>
+                <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 44px; height: 44px; background-color: rgba(16, 185, 129, 0.1); color: #10B981 !important;">
+                  <i class="fas fa-phone-alt" style="color: #F59E0B;"></i>
                 </div>
                 <div class="lh-sm">
                   <small class="text-muted d-block opacity-75" style="font-size: 10px;">Assistance 24h/7</small>
@@ -301,7 +274,7 @@
   </header>
 
   <!--==============================
-    Styles Unifiés & Ergonomie Complète
+    Styles Unifies & Ergonomie Complete
   ============================== -->
 <style>
   html, body {
@@ -310,7 +283,7 @@
   }
   body {
       padding-top: 135px !important;
-      background-color: #fcfcfc;
+      background-color: #F9FAFB;
   }
 
   /* Barre de navigation principale */
@@ -330,7 +303,7 @@
     position: relative !important;
 }
 
-/* Menu catégories */
+/* Menu categories */
 .custom-dropdown-menu {
     display: none;
     position: absolute;
@@ -363,11 +336,11 @@
 
 .custom-dropdown-menu .dropdown-item:hover {
     background-color: #f8f9fa;
-    color: #EFB7C1;
+    color: #10B981;
     padding-left: 20px;
 }
 
-/* Empêcher les parents de couper le menu */
+/* Empecher les parents de couper le menu */
 .deen-navbar,
 .deen-main-header,
 .container,
@@ -385,7 +358,7 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.08) !important;
   }
 
-  /* Menu Mobile Zone Récurrente */
+  /* Menu Mobile Zone Recurrente */
   .vs-menu-area {
       background: #ffffff !important;
       box-shadow: 5px 0 30px rgba(0,0,0,0.1);
@@ -396,7 +369,7 @@
       transition: color 0.2s ease;
   }
   .vs-mobile-menu ul li a:hover {
-      color: #EFB7C1 !important;
+      color: #10B981 !important;
   }
   .btn-danger-soft {
       background-color: rgba(220, 53, 69, 0.08);
@@ -404,31 +377,6 @@
   }
   .btn-danger-soft:hover {
       background-color: rgba(220, 53, 69, 0.15);
-  }
-
-  /* Flottant WhatsApp */
-  .deen-whatsapp-float {
-      position: fixed;
-      left: 24px;
-      bottom: 24px;
-      width: 54px;
-      height: 54px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: #25d366;
-      color: #fff;
-      font-size: 28px;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
-      z-index: 9999;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  .deen-whatsapp-float:hover {
-      color: #fff;
-      transform: scale(1.08) translateY(-4px);
-      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.45);
   }
 
   /* Effets et Utilitaires */
@@ -526,7 +474,7 @@
         e.stopPropagation();
     });
 
-    // fermer si clic extérieur
+    // fermer si clic exterieur
     document.addEventListener("click", function () {
         const menu = dropdown.querySelector(".dropdown-menu");
         if (menu) menu.classList.remove("show");
@@ -540,7 +488,7 @@
               authModal.show();
           {% endif %}
           
-          // Gérer le toggle du sous-menu catégories sur Mobile
+          // Gerer le toggle du sous-menu categories sur Mobile
           const catToggle = document.querySelector('.menu-item-has-children > a');
           if (catToggle) {
               catToggle.addEventListener('click', function(e) {
@@ -552,7 +500,7 @@
               });
           }
         });
-        // Dropdown Catégories Desktop
+        // Dropdown Categories Desktop
 const categoryButton = document.getElementById('desktopCategoryDropdown');
 const categoryMenu = document.getElementById('desktopCategoryMenu');
 
@@ -565,7 +513,7 @@ if (categoryButton && categoryMenu) {
         categoryMenu.classList.toggle('show');
     });
 
-    // Empêcher fermeture si clic dans le menu
+    // Empecher fermeture si clic dans le menu
     categoryMenu.addEventListener('click', function (e) {
         e.stopPropagation();
     });
@@ -580,7 +528,7 @@ if (categoryButton && categoryMenu) {
         }
     });
 
-    // Fermer avec Échap
+    // Fermer avec Echap
     document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             categoryMenu.classList.remove('show');
@@ -625,3 +573,8 @@ document.addEventListener("DOMContentLoaded", function () {
   {{ include('components/modal_auth.html.twig') }}
 </body>
 </html>
+
+
+
+
+

@@ -44,6 +44,9 @@ private ?\DateTimeImmutable $createdAt = null;
     #[ORM\OneToMany(mappedBy: "order", targetEntity: OrderItem::class, cascade: ["persist"])]
     private Collection $items;
 
+    #[ORM\OneToOne(mappedBy: 'commande', targetEntity: Paiement::class, cascade: ['persist', 'remove'])]
+    private ?Paiement $paiement = null;
+
     public function __construct()
 {
     $this->items = new ArrayCollection();
@@ -75,6 +78,8 @@ public function setUser(?User $user): static { $this->user = $user; return $this
 
 public function getTotal(): ?float { return $this->total; }
 public function setTotal(float $t): static { $this->total = $t; return $this; }
+public function getMontantTotal(): ?float { return $this->total; }
+public function setMontantTotal(float $montantTotal): static { $this->total = $montantTotal; return $this; }
 
 public function getCreatedAt(): ?\DateTimeImmutable { return $this->createdAt; }
 public function setCreatedAt(\DateTimeImmutable $d): static { $this->createdAt = $d; return $this; }
@@ -108,6 +113,8 @@ public function setGuestPhone(?string $p): static
     $this->guestPhone = $p;
     return $this;
 }
+public function getTelephone(): ?string { return $this->guestPhone ?? $this->user?->getTelephone(); }
+public function setTelephone(?string $telephone): static { $this->guestPhone = $telephone; return $this; }
 public function getGuestAddress(): ?string
 {
     return $this->guestAddress;
@@ -117,6 +124,20 @@ public function setGuestAddress(?string $a): static
     $this->guestAddress = $a;
     return $this;
 
+}
+public function getAdresseLivraison(): ?string { return $this->guestAddress ?? $this->user?->getAdresse(); }
+public function setAdresseLivraison(?string $adresseLivraison): static { $this->guestAddress = $adresseLivraison; return $this; }
+
+public function getPaiement(): ?Paiement { return $this->paiement; }
+public function setPaiement(?Paiement $paiement): static
+{
+    $this->paiement = $paiement;
+
+    if ($paiement !== null && $paiement->getCommande() !== $this) {
+        $paiement->setCommande($this);
+    }
+
+    return $this;
 }
 
 }
