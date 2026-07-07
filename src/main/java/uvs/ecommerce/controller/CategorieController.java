@@ -12,3 +12,4 @@ public class CategorieController extends AbstractCrudController<CategorieRequest
         super(service);
     }
 }
+

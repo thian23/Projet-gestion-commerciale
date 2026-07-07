@@ -5,3 +5,4 @@ import java.util.List;
 public interface DetailCommandeService extends CrudService<DetailCommandeRequest, DetailCommandeResponse> {
     List<DetailCommandeResponse> byOrder(Long orderId);
 }
+

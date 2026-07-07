@@ -20,4 +20,10 @@ public class CommandeController extends AbstractCrudController<CommandeRequest, 
     public List<CommandeResponse> byUser(@PathVariable Long userId) {
         return orders.byUser(userId);
     }
+
+    @GetMapping("/seller/{sellerId}")
+    public List<CommandeResponse> bySeller(@PathVariable Long sellerId) {
+        return orders.bySeller(sellerId);
+    }
 }
+

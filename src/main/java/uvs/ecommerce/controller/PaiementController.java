@@ -20,3 +20,4 @@ public class PaiementController extends AbstractCrudController<PaiementRequest, 
         return payments.byOrder(orderId);
     }
 }
+

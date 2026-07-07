@@ -17,10 +17,13 @@ public class Utilisateur extends BaseEntity {
     @Column(length = 30) private String telephone;
     @Column(length = 500) private String adresse;
     @Column(name = "date_inscription", nullable = false, updatable = false) private LocalDateTime dateInscription;
+    @Column(nullable = false) private Boolean bloque = false;
 
     @PrePersist
     void initialiserDate() {
         if (dateInscription == null) dateInscription = LocalDateTime.now();
         if (role == null) role = Role.ACHETEUR;
+        if (bloque == null) bloque = false;
     }
 }
+

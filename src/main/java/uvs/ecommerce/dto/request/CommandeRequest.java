@@ -8,3 +8,4 @@ public record CommandeRequest(@NotNull Long utilisateurId,
         @NotBlank @Size(max = 50) String modePaiement,
         @NotBlank @Size(max = 500) String adresseLivraison,
         @NotBlank @Size(max = 30) String telephone) {}
+

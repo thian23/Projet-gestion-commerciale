@@ -8,3 +8,4 @@ public interface CategorieRepository extends JpaRepository<Categorie, Long> {
 
     boolean existsByNomIgnoreCaseAndIdNot(String nom, Long id);
 }
+

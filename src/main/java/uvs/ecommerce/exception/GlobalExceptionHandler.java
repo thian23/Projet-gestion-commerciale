@@ -1,6 +1,7 @@
 package uvs.ecommerce.exception;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.*;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
@@ -10,6 +11,8 @@ import java.util.LinkedHashMap;
 public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     ResponseEntity<ApiError> notFound(ResourceNotFoundException ex) { return response(HttpStatus.NOT_FOUND, ex.getMessage(), null); }
+    @ExceptionHandler(AccessDeniedException.class)
+    ResponseEntity<ApiError> forbidden(AccessDeniedException ex) { return response(HttpStatus.FORBIDDEN, ex.getMessage(), null); }
     @ExceptionHandler({BusinessException.class, DataIntegrityViolationException.class})
     ResponseEntity<ApiError> conflict(Exception ex) {
         String message = ex instanceof BusinessException ? ex.getMessage() : "Operation impossible";
@@ -27,3 +30,4 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(status).body(new ApiError(LocalDateTime.now(), status.value(), message, errors));
     }
 }
+

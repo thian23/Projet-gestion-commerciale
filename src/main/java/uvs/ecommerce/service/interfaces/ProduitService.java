@@ -7,3 +7,4 @@ public interface ProduitService extends CrudService<ProduitRequest, ProduitRespo
     List<ProduitResponse> bySeller(Long sellerId);
     List<ProduitResponse> search(String name);
 }
+

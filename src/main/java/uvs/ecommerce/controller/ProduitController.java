@@ -31,3 +31,4 @@ public class ProduitController extends AbstractCrudController<ProduitRequest, Pr
         return products.search(name);
     }
 }
+

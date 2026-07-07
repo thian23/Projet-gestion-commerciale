@@ -27,3 +27,4 @@ public class Paiement extends BaseEntity {
     @Column(name = "transaction_id", unique = true)
     private String identifiantTransaction;
 }
+

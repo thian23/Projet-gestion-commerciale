@@ -4,3 +4,4 @@ import uvs.ecommerce.dto.response.PaiementResponse;
 public interface PaiementService extends CrudService<PaiementRequest, PaiementResponse> {
     PaiementResponse byOrder(Long orderId);
 }
+

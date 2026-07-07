@@ -21,3 +21,4 @@ public class DetailCommandeController extends AbstractCrudController<DetailComma
         return details.byOrder(orderId);
     }
 }
+

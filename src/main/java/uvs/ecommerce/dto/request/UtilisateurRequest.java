@@ -8,3 +8,4 @@ public record UtilisateurRequest(
         @NotNull Role role,
         @Size(max = 30) String telephone,
         @Size(max = 500) String adresse) {}
+

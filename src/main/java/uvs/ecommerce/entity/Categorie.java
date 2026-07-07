@@ -15,3 +15,4 @@ public class Categorie extends BaseEntity {
     private String description;
     private String image;
 }
+

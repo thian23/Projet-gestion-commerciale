@@ -27,3 +27,4 @@ public class Panier extends BaseEntity {
             dateAjout = LocalDateTime.now();
     }
 }
+

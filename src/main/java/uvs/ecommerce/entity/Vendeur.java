@@ -22,3 +22,4 @@ public class Vendeur extends BaseEntity {
     @Column(nullable = false, length = 20)
     private StatutVendeur statut = StatutVendeur.EN_ATTENTE;
 }
+

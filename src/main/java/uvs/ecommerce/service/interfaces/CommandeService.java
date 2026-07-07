@@ -4,4 +4,6 @@ import uvs.ecommerce.dto.response.CommandeResponse;
 import java.util.List;
 public interface CommandeService extends CrudService<CommandeRequest, CommandeResponse> {
     List<CommandeResponse> byUser(Long userId);
+    List<CommandeResponse> bySeller(Long sellerId);
 }
+

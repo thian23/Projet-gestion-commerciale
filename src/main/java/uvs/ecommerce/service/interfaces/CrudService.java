@@ -7,3 +7,4 @@ public interface CrudService<Q, S> {
     S update(Long id, Q request);
     void delete(Long id);
 }
+

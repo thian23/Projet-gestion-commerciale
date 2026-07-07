@@ -13,3 +13,4 @@ public interface PanierRepository extends JpaRepository<Panier, Long> {
 
     void deleteByUtilisateurId(Long utilisateurId);
 }
+

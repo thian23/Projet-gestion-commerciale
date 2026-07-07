@@ -8,3 +8,4 @@ public record PaiementRequest(@NotNull Long commandeId,
         @NotBlank @Size(max = 50) String moyenPaiement,
         @NotNull StatutPaiement statut, LocalDateTime datePaiement,
         String identifiantTransaction) {}
+

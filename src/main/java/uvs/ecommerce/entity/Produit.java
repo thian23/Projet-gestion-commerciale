@@ -16,6 +16,8 @@ public class Produit extends BaseEntity {
     private String description;
     @Column(nullable = false, precision = 12, scale = 2)
     private BigDecimal prix;
+    @Column(name = "ancien_prix", precision = 12, scale = 2)
+    private BigDecimal ancienPrix;
     @Column(nullable = false)
     private Integer stock;
     private String image;
@@ -29,4 +31,11 @@ public class Produit extends BaseEntity {
     private BigDecimal promotion = BigDecimal.ZERO;
     @Column(name = "note_moyenne", precision = 3, scale = 2)
     private BigDecimal noteMoyenne = BigDecimal.ZERO;
+    private Integer avis = 0;
+    @Column(name = "livraison_gratuite")
+    private Boolean livraisonGratuite = false;
+    private Boolean nouveau = false;
+    @Column(length = 120)
+    private String marque;
 }
+

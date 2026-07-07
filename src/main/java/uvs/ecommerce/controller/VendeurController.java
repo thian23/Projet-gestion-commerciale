@@ -12,3 +12,4 @@ public class VendeurController extends AbstractCrudController<VendeurRequest, Ve
         super(service);
     }
 }
+

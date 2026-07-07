@@ -21,3 +21,4 @@ public class DetailCommande extends BaseEntity {
     @Column(name = "prix_unitaire", nullable = false, precision = 12, scale = 2)
     private BigDecimal prixUnitaire;
 }
+

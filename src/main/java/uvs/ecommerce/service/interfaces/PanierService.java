@@ -6,3 +6,4 @@ public interface PanierService extends CrudService<PanierRequest, PanierResponse
     List<PanierResponse> byUser(Long userId);
     void clear(Long userId);
 }
+

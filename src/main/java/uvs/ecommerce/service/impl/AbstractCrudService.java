@@ -57,3 +57,4 @@ public abstract class AbstractCrudService<E extends BaseEntity, Q, S> implements
 
     protected abstract S toResponse(E entity);
 }
+

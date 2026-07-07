@@ -11,3 +11,4 @@ public interface VendeurRepository extends JpaRepository<Vendeur, Long> {
 
     boolean existsByUtilisateurIdAndIdNot(Long utilisateurId, Long id);
 }
+

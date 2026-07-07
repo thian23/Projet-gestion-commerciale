@@ -28,3 +28,4 @@ public class PanierController extends AbstractCrudController<PanierRequest, Pani
         carts.clear(userId);
     }
 }
+

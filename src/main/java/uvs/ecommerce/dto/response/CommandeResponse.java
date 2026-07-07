@@ -8,3 +8,4 @@ public record CommandeResponse(Long id, Long utilisateurId, String nomUtilisateu
                 LocalDateTime dateCommande, BigDecimal montantTotal, StatutCommande statut,
                 String modePaiement, String adresseLivraison, String telephone) {
 }
+

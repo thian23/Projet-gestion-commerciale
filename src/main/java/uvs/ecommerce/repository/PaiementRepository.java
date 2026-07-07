@@ -11,3 +11,4 @@ public interface PaiementRepository extends JpaRepository<Paiement, Long> {
 
     boolean existsByCommandeIdAndIdNot(Long commandeId, Long id);
 }
+
